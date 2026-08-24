@@ -437,7 +437,7 @@
   /* Portfolio Kategorien */
   .portfolio-category { padding: 48px 24px; }
   .portfolio-grid { grid-template-columns: 1fr; }
-  .portfolio-cat-header-wrap { margin-left: 0; padding: 0; }
+  .portfolio-cat-header-wrap { margin-left: 0; padding: 0; overflow: hidden; width: 100%; }
 
   /* Category Tiles */
   .category-grid { grid-template-columns: 1fr; }
@@ -451,6 +451,10 @@
 
   /* About */
   .about-grid { grid-template-columns: 1fr; gap: 32px; }
+.about-text { padding: 0; overflow: hidden; width: 100%; }
+.about-name { font-size: 28px; }
+.about-bio { font-size: 14px; }
+.about-role { font-size: 11px; }
   .about-img-wrap { aspect-ratio: 4/3; width: 100%; }
   .about-name { font-size: 32px; }
   .vita-item { grid-template-columns: 80px 1fr; gap: 12px; }
@@ -659,14 +663,67 @@
   color: rgba(255,255,255,0.85);
 }
 
-/* Responsive */
+/* ── Responsive ── */
 @media (max-width: 900px) {
+  html, body {
+    overflow-x: hidden;
+    max-width: 100%;
+  }
+
+  .hero-title { font-size: clamp(40px, 10vw, 80px); }
+  .hero-sub { display: none; }
+  .hero-label { font-size: 11px; letter-spacing: 0.08em; }
+
+  nav { padding: 0 24px; }
+  .nav-links { display: none; }
+  .theme-toggle { display: none; }
+  .hamburger { display: flex; }
+
+  section { padding: 48px 24px; }
+
+  .hero-rows { height: 35vh; }
+  .hero-title-block { padding: 0 16px; }
+
+  .portfolio-category { padding: 48px 24px; }
+  .portfolio-grid { grid-template-columns: 1fr; }
+  .portfolio-cat-header-wrap { margin-left: 0; padding: 0; overflow: hidden; width: 100%; }
+  .portfolio-cat-title { font-size: clamp(20px, 5vw, 32px); }
+
+  .category-grid { grid-template-columns: 1fr; }
+
+  .card-title { font-size: 16px; }
+  .card-cat { font-size: 10px; }
+
+  .skills-grid { grid-template-columns: 1fr; }
+
+  .about-grid { grid-template-columns: 1fr; gap: 32px; }
+  .about-img-wrap { aspect-ratio: 4/3; width: 100%; }
+  .about-text { padding: 0; width: 100%; }
+  .about-name { font-size: 28px; }
+  .about-bio { font-size: 14px; }
+  .about-role { font-size: 11px; }
+  .vita-item { grid-template-columns: 80px 1fr; gap: 12px; }
+  .vita-year { font-size: 11px; }
+  .about-vita { margin-top: 40px; }
+
+  .contact-inner { grid-template-columns: 1fr; gap: 40px; }
+  .contact-intro { font-size: clamp(22px, 5vw, 36px); }
+
+  .category-detail { overflow-x: hidden; }
   .detail-projects { padding: 0 24px 40px; gap: 80px; }
-  .detail-project-img,
-  .detail-project.reverse .detail-project-img { grid-template-columns: 1fr; }
-  .detail-project-img-stack { flex-direction: row; height: 160px; }
+  .detail-project-img { grid-template-columns: 1fr; height: auto; }
+  .detail-project-img-stack { flex-direction: row; height: 160px; width: 100%; }
+  .detail-project-img-main { aspect-ratio: 16/9; height: auto; width: 100%; }
+  .detail-project.reverse .detail-project-img-stack { order: 1; }
+  .detail-project.reverse .detail-project-img-main { order: 2; }
+  .detail-header { padding: 16px 24px 32px; overflow: hidden; width: 100%; }
+  .detail-title { font-size: clamp(20px, 5vw, 32px); }
   .detail-project-text-top { flex-direction: column; gap: 4px; }
-  .detail-header { padding: 20px 24px 40px; }
+
+  .slideshow-wrap { height: 240px; }
+
+  footer { flex-direction: column; gap: 8px; text-align: center; }
+  .mobile-menu { padding: 24px; }
 }
 
 /* ── Vimeo Video Lightbox ── */
