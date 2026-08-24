@@ -686,8 +686,18 @@
 
   .portfolio-category { padding: 48px 24px; }
   .portfolio-grid { grid-template-columns: 1fr; }
-  .portfolio-cat-header-wrap { margin-left: 0; padding: 0; overflow: hidden; width: 100%; }
+  .portfolio-cat-header-wrap { margin-left: 0; padding: 0; width: 100%; flex-direction: column; gap: 8px; }
+.portfolio-cat-header-wrap .divider { display: none; }
+.portfolio-cat-label { font-size: 11px; }
+.portfolio-cat-title { font-size: clamp(24px, 7vw, 40px); }
   .portfolio-cat-title { font-size: clamp(20px, 5vw, 32px); }
+
+.project-card .card-overlay {
+  opacity: 1;
+  background: linear-gradient(to top, rgba(16,16,14,0.85) 0%, transparent 70%);
+}
+.project-card .card-title { transform: translateY(0); }
+.project-card .card-cat { transform: translateY(0); }
 
   .category-grid { grid-template-columns: 1fr; }
 
@@ -696,14 +706,16 @@
 
   .skills-grid { grid-template-columns: 1fr; }
 
+  #about { padding: 48px 24px; overflow: hidden; }
   .about-grid { grid-template-columns: 1fr; gap: 32px; }
   .about-img-wrap { aspect-ratio: 4/3; width: 100%; }
-  .about-text { padding: 0; width: 100%; }
-  .about-name { font-size: 28px; }
-  .about-bio { font-size: 14px; }
-  .about-role { font-size: 11px; }
-  .vita-item { grid-template-columns: 80px 1fr; gap: 12px; }
-  .vita-year { font-size: 11px; }
+  .about-text { padding: 0; margin: 0; width: 100%; box-sizing: border-box; }
+  .about-name { font-size: 28px; margin-left: 0; padding-left: 0; }
+  .about-bio { font-size: 14px; margin-left: 0; padding-left: 0; }
+  .about-role { font-size: 11px; margin-left: 0; padding-left: 0; }
+  .vita-items { margin-left: 0; padding-left: 0; width: 100%; }
+  .vita-item { grid-template-columns: 70px 1fr; gap: 12px; margin-left: 0; padding-left: 0; box-sizing: border-box; }
+  .vita-year { font-size: 10px; min-width: 70px; }
   .about-vita { margin-top: 40px; }
 
   .contact-inner { grid-template-columns: 1fr; gap: 40px; }
