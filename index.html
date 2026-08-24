@@ -167,14 +167,17 @@
   left: 0; right: 0;
   z-index: 10;
   text-align: center;
-  padding: 0 40px;
+  padding: 0;
+  width: 100%;
+  overflow: hidden;
 }
 .hero-title {
-  font-size: clamp(110px, 17vw, 290px);
+  font-size: clamp(60px, 12vw, 220px);
   font-weight: 900; line-height: 1;
   color: #ffffff;
   text-transform: uppercase;
   opacity: 0; animation: fadeUp 0.8s 0.6s forwards;
+  white-space: nowrap;
 }
 .hero-bottom {
   padding: 24px 40px 48px;
@@ -286,9 +289,9 @@
 
     /* ── About ── */
     #about { background: var(--bg2); }
-    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
+    .about-grid { display: grid; grid-template-columns: 1fr 2fr; gap: 40px; align-items: start; }
     .about-img-wrap {
-      width: 85%; aspect-ratio: 1/1; background: var(--card-bg);
+      width: 85%; aspect-ratio: 2/3; background: var(--card-bg);
       border-radius: var(--radius); overflow: hidden;
       position: relative; display: flex; align-items: center; justify-content: center;
     }
@@ -304,15 +307,19 @@
     .vita-items { display: flex; flex-direction: column; gap: 24px; }
     .vita-item { display: grid; grid-template-columns: 100px 1fr; gap: 20px; padding-bottom: 24px; border-bottom: 1px solid var(--border); }
     .vita-item:last-child { border-bottom: none; }
-    .vita-year { font-size: 15px; letter-spacing: 0.06em; color: var(--accent); padding-top: 2px; font-weight: 400; }
-    .vita-title { font-size: 18px; font-weight: 600; margin-bottom: 3px; }
-    .vita-place { font-size: 17px; color: var(--text-dim); font-weight: 300; }
+    .vita-year { font-size: 14px; letter-spacing: 0.06em; color: var(--accent); padding-top: 2px; font-weight: 400; }
+    .vita-title { font-size: 16px; font-weight: 500; margin-bottom: 3px; }
+    .vita-place { font-size: 15px; color: var(--text-dim); font-weight: 400; }
 
     /* ── Skills ── */
     #skills { background: var(--bg); }
-    .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3px; }
+    .skills-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3px;
+}
 .skill-card {
-  padding: 48px 40px;
+  padding: 32px 28px;
   border-radius: var(--radius);
   transition: filter var(--transition);
   position: relative;
@@ -325,15 +332,25 @@
 .skill-card:nth-child(4) { background: #3f8a8a; }
 .skill-card:nth-child(5) { background: #8a4250; }
 .skill-card:nth-child(6) { background: #5f7a3f; }
-    .skill-icon { font-size: 40px; margin-bottom: 20px; display: block; }
-    .skill-name {
-  font-size: 26px;
+.skill-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+.skill-icon {
+  font-size: 24px;
+  color: #ffffff;
+  flex-shrink: 0;
+}
+.skill-name {
+  font-size: 16px;
   font-weight: 700;
-  margin-bottom: 10px;
+  margin-bottom: 0;
   color: #ffffff;
 }
     .skill-desc {
-  font-size: 18px;
+  font-size: 16px;
   color: rgba(255,255,255,0.75);
   line-height: 1.65;
   font-weight: 400;
@@ -900,16 +917,16 @@
     </div>
     <div class="about-text reveal">
       <h2 class="about-name">Isa Freese</h2>
-      <p class="about-role">Videokünstlerin, Motion- & Grafikdesignerin · Hannover</p>
+      <p class="about-role">Videokünstlerin, Grafikdesignerin & Illustratorin · Hannover</p>
       <div class="about-bio">
         <p>In meiner gestalterischen Praxis entwickle ich immersive und interaktive Rauminstallationen, audiovisuelle Ausstellungsformate sowie Licht- und Projektionskonzepte. Neben meiner freien künstlerischen Arbeit habe ich als Grafikdesignerin Konzepte für die Öffentlichkeitsarbeit entwickelt, die von Logodesign über Illustration bis hin zur Entwicklung und Produktion von Erklärvideoformaten reichen.</p>
         <p>Meine künstlerische Forschung erkundet die Möglichkeiten von KI-Bildgenerierung, abstrakten Videoformaten und bewegt sich an der Schnittstelle zwischen digitaler und analoger Installationskunst. Dabei thematisiere ich aktuelle gesellschaftspolitische Fragen und möchte Räume für Dialog, Reflexion und Teilhabe schaffen.</p>
       </div>
       <div class="vita-items">
         <div class="vita-item">
-          <span class="vita-year">2026 – heute</span>
+          <span class="vita-year">2023 – heute</span>
           <div>
-            <div class="vita-title">Freiberufliche Installationskünstlerin, Grafik- & Motiondesignerin</div>
+            <div class="vita-title">Freiberufliche Installationskünstlerin, Grafikdesignerin & Illustratorin</div>
             <div class="vita-place">Hannover</div>
           </div>
         </div>
@@ -917,6 +934,20 @@
           <span class="vita-year">2024 – 2026</span>
           <div>
             <div class="vita-title">Masterstudium Gestaltung – Digital Media and Experiment</div>
+            <div class="vita-place">Hochschule Bielefeld, Bielefeld</div>
+          </div>
+        </div>
+        <div class="vita-item">
+          <span class="vita-year">2022 – 2023</span>
+          <div>
+            <div class="vita-title">Wissenschaftliche Mitarbeit im Forschungsprojekt ViRDiPA</div>
+            <div class="vita-place">Hochschule Bielefeld, Bielefeld</div>
+          </div>
+        </div>
+        <div class="vita-item">
+          <span class="vita-year">2021 – 2022</span>
+          <div>
+            <div class="vita-title">Wissenschaftliche Mitarbeit im Forschungsprojekt DiViFaG</div>
             <div class="vita-place">Hochschule Bielefeld, Bielefeld</div>
           </div>
         </div>
@@ -940,39 +971,51 @@
     <div class="divider"></div>
   </div>
   <div class="skills-grid reveal">
-        <div class="skill-card">
-      <span class="skill-icon">▣</span>
-      <div class="skill-name">Grafikdesign & Illustration</div>
+    <div class="skill-card">
+      <div class="skill-header">
+        <span class="skill-icon">▣</span>
+        <div class="skill-name">Grafikdesign & Illustration</div>
+      </div>
       <div class="skill-desc">Layout, Typografie, Logo, Corporate Design, handgezeichnete & digitale Illustrationen, Gestaltung von Printprodukten</div>
       <div class="skill-bar"><div class="skill-bar-fill" style="--fill: 100%"></div></div>
     </div>
     <div class="skill-card">
-      <span class="skill-icon">꩜</span>
-      <div class="skill-name">Motiondesign</div>
+      <div class="skill-header">
+        <span class="skill-icon">꩜</span>
+        <div class="skill-name">Motiondesign</div>
+      </div>
       <div class="skill-desc">Motion Graphics und 2D-Animationen, Videoproduktion, Postproduktion & Schnitt, Bewegtbild-Illustrationen, KI-Prompting</div>
       <div class="skill-bar"><div class="skill-bar-fill" style="--fill: 100%"></div></div>
     </div>
     <div class="skill-card">
-      <span class="skill-icon">⬡</span>
-      <div class="skill-name">Immersives Design</div>
-      <div class="skill-desc">Konzeptentwicklung für immersive Erlebnisse, technische Planung & Umsetzung, Projektions- & Bildschirminstallationen, Projection Mapping, Lichtreaktive Kunst, Raumgestaltung</div>
+      <div class="skill-header">
+        <span class="skill-icon">⬡</span>
+        <div class="skill-name">Immersives Design</div>
+      </div>
+      <div class="skill-desc">Immersive Erlebniskonzepte, Technische Planung, Projektions- & Bildschirminstallationen, Projection Mapping, Lichtreaktive Kunst, Raumgestaltung</div>
       <div class="skill-bar"><div class="skill-bar-fill" style="--fill: 100%"></div></div>
     </div>
     <div class="skill-card">
-      <span class="skill-icon">◈</span>
-      <div class="skill-name">Konzept & Art Direction</div>
+      <div class="skill-header">
+        <span class="skill-icon">◈</span>
+        <div class="skill-name">Konzept & Art Direction</div>
+      </div>
       <div class="skill-desc">Thematische Recherche, Design Thinking, Bildsprache, Stilistik, Storyboard & Skript</div>
       <div class="skill-bar"><div class="skill-bar-fill" style="--fill: 100%"></div></div>
     </div>
     <div class="skill-card">
-      <span class="skill-icon">◉</span>
-      <div class="skill-name">Produktdesign</div>
+      <div class="skill-header">
+        <span class="skill-icon">◉</span>
+        <div class="skill-name">Produktdesign</div>
+      </div>
       <div class="skill-desc">Entwurfsprozess, 3D Modellierung, Materialstudien, Fertigungstechnik, Modellbau</div>
       <div class="skill-bar"><div class="skill-bar-fill" style="--fill: 100%"></div></div>
     </div>
     <div class="skill-card">
-      <span class="skill-icon">⬚</span>
-      <div class="skill-name">Software Skills</div>
+      <div class="skill-header">
+        <span class="skill-icon">⬚</span>
+        <div class="skill-name">Software Skills</div>
+      </div>
       <div class="skill-desc">Adobe Suite, Affinity Designer, Rhinoceros, Keyshot, Resolume Arena, ProCreate, KI-Prompting</div>
       <div class="skill-bar"><div class="skill-bar-fill" style="--fill: 100%"></div></div>
     </div>
