@@ -1,31 +1,26 @@
 <!DOCTYPE html>
-<html lang="de" data-theme="dark">
+<html lang="de" data-theme="light">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Isa — Portfolio</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <title>Isa Freese — Portfolio</title>
   <style>
     /* ── Variables ── */
     :root {
       --accent: #e8dcc8;
       --accent-dim: rgba(232,220,200,0.45);
-      --accent-subtle: rgba(232,220,200,0.12);
+      --accent-subtle: rgba(232,220,200,0.1);
       --bg: #161614;
       --bg2: #1c1c1a;
       --bg3: #222220;
       --text: #e8e4de;
-      --text-dim: rgba(232,228,222,0.5);
+      --text-dim: rgba(232,228,222,0.55);
       --text-dimmer: rgba(232,228,222,0.28);
       --border: rgba(232,228,222,0.1);
       --nav-bg: rgba(22,22,20,0.88);
       --card-bg: #1e1e1c;
-      --shadow: 0 8px 40px rgba(0,0,0,0.45);
       --radius: 4px;
-      --font-display: 'Cormorant Garamond', serif;
-      --font-body: 'DM Sans', sans-serif;
+      --font: 'Segoe UI', system-ui, sans-serif;
       --transition: 0.35s cubic-bezier(0.25,0.46,0.45,0.94);
     }
     [data-theme="light"] {
@@ -38,17 +33,16 @@
       --border: rgba(26,26,24,0.12);
       --nav-bg: rgba(244,241,236,0.9);
       --card-bg: #edeae3;
-      --shadow: 0 8px 40px rgba(0,0,0,0.12);
-      --accent: #7a6a52;
-      --accent-dim: rgba(122,106,82,0.4);
-      --accent-subtle: rgba(122,106,82,0.1);
+      --accent: #2a2a28;
+      --accent-dim: rgba(42,42,40,0.4);
+      --accent-subtle: rgba(42,42,40,0.08);
     }
 
     /* ── Reset ── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
     body {
-      font-family: var(--font-body);
+      font-family: var(--font);
       background: var(--bg);
       color: var(--text);
       line-height: 1.6;
@@ -74,624 +68,316 @@
       border-bottom: 1px solid var(--border);
       transition: background var(--transition);
     }
-    .nav-brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
+    .nav-brand { display: flex; align-items: center; gap: 12px; }
     .logo-placeholder {
-      width: 36px;
-      height: 36px;
+      width: 36px; height: 36px;
       border-radius: 50%;
       border: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: var(--font-display);
-      font-size: 15px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 15px; font-weight: 600;
       color: var(--accent);
       background: var(--accent-subtle);
       cursor: pointer;
       transition: border-color var(--transition);
-      overflow: hidden;
-      position: relative;
+      overflow: hidden; position: relative;
     }
-    .logo-placeholder img {
-      position: absolute;
-      inset: 0;
-      object-fit: cover;
-      display: none;
-    }
+    .logo-placeholder img { position: absolute; inset: 0; object-fit: cover; display: none; }
     .logo-placeholder:hover { border-color: var(--accent-dim); }
-    .logo-upload-hint {
-      font-size: 9px;
-      color: var(--text-dimmer);
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      position: absolute;
-      bottom: -18px;
-      left: 50%;
-      transform: translateX(-50%);
-      white-space: nowrap;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.2s;
-    }
-    .logo-placeholder:hover .logo-upload-hint { opacity: 1; }
-    .brand-name {
-      font-family: var(--font-display);
-      font-size: 20px;
-      font-weight: 400;
-      letter-spacing: 0.06em;
-      color: var(--text);
-    }
-    .nav-right {
-      display: flex;
-      align-items: center;
-      gap: 36px;
-    }
-    .nav-links {
-      display: flex;
-      gap: 32px;
-      list-style: none;
-    }
+    .brand-name { font-size: 16px; font-weight: 600; letter-spacing: 0.04em; color: var(--text); }
+    .nav-right { display: flex; align-items: center; gap: 36px; }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
     .nav-links a {
-      font-size: 12px;
-      font-weight: 400;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--text-dim);
-      transition: color 0.2s;
-      position: relative;
+      font-size: 11px; font-weight: 400;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--text-dim); transition: color 0.2s; position: relative;
     }
     .nav-links a::after {
-      content: '';
-      position: absolute;
-      bottom: -3px;
-      left: 0; right: 0;
-      height: 1px;
-      background: var(--accent);
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform 0.3s var(--transition);
+      content: ''; position: absolute; bottom: -3px; left: 0; right: 0;
+      height: 1px; background: var(--accent);
+      transform: scaleX(0); transform-origin: left;
+      transition: transform 0.3s;
     }
     .nav-links a:hover { color: var(--text); }
     .nav-links a:hover::after { transform: scaleX(1); }
-
-    /* Theme toggle */
     .theme-toggle {
-      background: none;
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 6px 14px;
-      cursor: pointer;
-      font-family: var(--font-body);
-      font-size: 11px;
-      letter-spacing: 0.08em;
-      color: var(--text-dim);
-      text-transform: uppercase;
-      transition: all 0.2s;
-      display: flex;
-      align-items: center;
-      gap: 6px;
+      background: none; border: 1px solid var(--border); border-radius: 20px;
+      padding: 6px 14px; cursor: pointer; font-family: var(--font);
+      font-size: 11px; letter-spacing: 0.08em; color: var(--text-dim);
+      text-transform: uppercase; transition: all 0.2s;
+      display: flex; align-items: center; gap: 6px;
     }
-    .theme-toggle:hover {
-      border-color: var(--accent-dim);
-      color: var(--text);
-    }
-    .theme-icon { font-size: 13px; }
-
-    /* Hamburger */
+    .theme-toggle:hover { border-color: var(--accent-dim); color: var(--text); }
     .hamburger {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      cursor: pointer;
-      background: none;
-      border: none;
-      padding: 4px;
+      display: none; flex-direction: column; gap: 5px;
+      cursor: pointer; background: none; border: none; padding: 4px;
     }
-    .hamburger span {
-      display: block;
-      width: 22px;
-      height: 1.5px;
-      background: var(--text);
-      transition: all 0.3s;
+    .hamburger span { display: block; width: 22px; height: 1.5px; background: var(--text); transition: all 0.3s; }
+    .mobile-menu {
+      display: none; position: fixed; top: 64px; left: 0; right: 0;
+      background: var(--nav-bg); backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      padding: 24px 40px; z-index: 99; flex-direction: column; gap: 20px;
     }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-dim); }
 
-    /* ── Hero ── */
-    #home {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      position: relative;
-      overflow: hidden;
-    }
-    .hero-bg {
-      position: absolute;
-      inset: 0;
-      background: var(--bg2);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .hero-bg-placeholder {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      opacity: 0.6;
-      display: none;
-    }
-    .hero-bg-pattern {
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(ellipse at 20% 50%, rgba(232,220,200,0.04) 0%, transparent 60%),
-        radial-gradient(ellipse at 80% 20%, rgba(232,220,200,0.03) 0%, transparent 50%);
-    }
-    [data-theme="light"] .hero-bg-pattern {
-      background:
-        radial-gradient(ellipse at 20% 50%, rgba(122,106,82,0.06) 0%, transparent 60%),
-        radial-gradient(ellipse at 80% 20%, rgba(122,106,82,0.04) 0%, transparent 50%);
-    }
-    .hero-bg-text {
-      font-family: var(--font-display);
-      font-size: clamp(120px, 20vw, 280px);
-      font-weight: 300;
-      color: var(--accent-subtle);
-      letter-spacing: -0.02em;
-      line-height: 1;
-      user-select: none;
-      pointer-events: none;
-    }
-    .hero-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to top, var(--bg) 0%, transparent 50%);
-    }
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      padding: 0 40px 72px;
-      max-width: 900px;
-    }
-    .hero-label {
-      font-size: 11px;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 20px;
-      opacity: 0;
-      animation: fadeUp 0.8s 0.2s forwards;
-    }
-    .hero-title {
-      font-family: var(--font-display);
-      font-size: clamp(48px, 7vw, 96px);
-      font-weight: 300;
-      line-height: 1.05;
-      letter-spacing: -0.01em;
-      color: var(--text);
-      margin-bottom: 24px;
-      opacity: 0;
-      animation: fadeUp 0.8s 0.35s forwards;
-    }
-    .hero-title em {
-      font-style: italic;
-      color: var(--accent);
-    }
-    .hero-sub {
-      font-size: 15px;
-      color: var(--text-dim);
-      max-width: 420px;
-      line-height: 1.75;
-      opacity: 0;
-      animation: fadeUp 0.8s 0.5s forwards;
-    }
-    .hero-scroll {
-      position: absolute;
-      bottom: 32px;
-      right: 40px;
-      z-index: 2;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 10px;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--text-dimmer);
-      opacity: 0;
-      animation: fadeUp 0.8s 0.8s forwards;
-    }
-    .scroll-line {
-      width: 40px;
-      height: 1px;
-      background: var(--accent-dim);
-      position: relative;
-      overflow: hidden;
-    }
-    .scroll-line::after {
-      content: '';
-      position: absolute;
-      top: 0; left: -100%;
-      width: 100%; height: 100%;
-      background: var(--accent);
-      animation: scrollLine 2s 1.5s infinite;
-    }
+/* ── Hero ── */
+#home {
+  min-height: 100vh;
+  display: flex; flex-direction: column;
+  position: relative; overflow: hidden;
+  padding-top: 64px;
+  background: var(--bg);
+}
+.hero-top {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 40px 0;
+  z-index: 5;
+  position: relative;
+}
+.hero-label {
+  font-size: clamp(12px, 1.5vw, 20px); font-weight: 500;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--accent); text-align: center;
+  opacity: 0; animation: fadeUp 0.8s 0.3s forwards;
+}
+.hero-rows {
+  position: relative;
+  display: flex; flex-direction: column;
+  gap: 0; overflow: hidden;
+}
+.hero-row-wrap { overflow: hidden; width: 100%; height: 30vh; }
+.hero-row { display: flex; gap: 0; width: max-content; height: 100%; }
+.hero-row img {
+  height: 100%; width: auto; object-fit: cover;
+  min-width: 180px; max-width: 480px; flex-shrink: 0; display: block;
+}
+.row-left  { animation: marqueeLeft  35s linear infinite; }
+.row-right { animation: marqueeRight 35s linear infinite; }
+@keyframes marqueeLeft  { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+@keyframes marqueeRight { from { transform: translateX(-50%); } to { transform: translateX(0); } }
 
-    /* ── Hero image upload area ── */
-    .hero-upload-zone {
-      position: absolute;
-      inset: 0;
-      z-index: 1;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .hero-upload-hint {
-      background: var(--accent-subtle);
-      border: 1px dashed var(--accent-dim);
-      border-radius: 8px;
-      padding: 16px 28px;
-      font-size: 12px;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--accent-dim);
-      text-align: center;
-      pointer-events: none;
-      transition: all 0.2s;
-    }
-    .hero-upload-zone:hover .hero-upload-hint {
-      color: var(--accent);
-      border-color: var(--accent);
-    }
-    #hero-file-input { display: none; }
+/* Titel liegt auf der Unterkante der Galerie */
+.hero-title-block {
+  position: absolute;
+  bottom: 0;
+  left: 0; right: 0;
+  z-index: 10;
+  text-align: center;
+  padding: 0 40px;
+}
+.hero-title {
+  font-size: clamp(110px, 17vw, 290px);
+  font-weight: 900; line-height: 1;
+  color: #ffffff;
+  text-transform: uppercase;
+  opacity: 0; animation: fadeUp 0.8s 0.6s forwards;
+}
+.hero-bottom {
+  padding: 24px 40px 48px;
+  text-align: center;
+  position: relative; z-index: 5;
+}
+.hero-sub {
+  font-size: clamp(30px, 4vw, 52px);
+  font-weight: 600;
+  color: #3f8a8a;
+  line-height: 2;
+  max-width: 700px;
+  margin: 0 auto;
+  opacity: 0; animation: fadeUp 0.8s 0.9s forwards;
+}
+.hero-scroll {
+  position: absolute; bottom: 32px; left: 40px; z-index: 3;
+  display: flex; align-items: center; gap: 10px;
+  font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--text-dimmer);
+  opacity: 0; animation: fadeUp 0.8s 1.2s forwards;
+}
+.scroll-line {
+  width: 40px; height: 1px; background: var(--accent-dim);
+  position: relative; overflow: hidden;
+}
+.scroll-line::after {
+  content: ''; position: absolute; top: 0; left: -100%;
+  width: 100%; height: 100%; background: var(--accent);
+  animation: scrollLine 2s 1.5s infinite;
+}
 
     /* ── Sections ── */
     section { padding: 100px 40px; }
     .section-header {
-      display: flex;
-      align-items: baseline;
-      gap: 20px;
-      margin-bottom: 64px;
+      display: flex; align-items: baseline; gap: 20px; margin-bottom: 64px;
     }
     .section-label {
-      font-size: 10px;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--accent);
+      font-size: 14px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent);
     }
     .section-title {
-      font-family: var(--font-display);
-      font-size: clamp(36px, 5vw, 64px);
-      font-weight: 300;
-      color: var(--text);
-      line-height: 1.1;
+      font-size: clamp(24px, 3vw, 40px); font-weight: 700; text-transform: uppercase;
+      color: var(--text); line-height: 1.1;
     }
-    .divider {
-      flex: 1;
-      height: 1px;
-      background: var(--border);
-      margin-bottom: 6px;
-    }
+    .divider { flex: 1; height: 1px; background: var(--border); margin-bottom: 6px; }
 
-    /* ── Portfolio ── */
-    #portfolio { background: var(--bg); }
-    .portfolio-grid {
-      display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: 3px;
-    }
+/* ── Portfolio ── */
+.portfolio-category { padding: 80px 40px; }
+.cat-video   { background: #2e5f5f; }
+.cat-grafik  { background: #c46a3f; }
+.cat-produkt { background: #8a4250; }
+.portfolio-cat-header-wrap {
+  display: flex;
+  align-items: baseline;
+  gap: 20px;
+  max-width: 1400px;
+  margin-left: 5%;
+  margin-right: auto;
+  margin-bottom: 40px;
+}
+.portfolio-cat-label {
+  font-size: 14px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.7);
+  white-space: nowrap;
+}
+.portfolio-cat-title {
+  font-size: clamp(28px, 4vw, 58px);
+  font-weight: 800;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+}
+.portfolio-cat-header-wrap .divider {
+  flex: 1;
+  height: 1px;
+  background: rgba(255,255,255,0.25);
+  margin-bottom: 6px;
+}
+.portfolio-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3px; }
+
     .project-card {
-      position: relative;
-      overflow: hidden;
-      cursor: pointer;
-      background: var(--card-bg);
+      position: relative; overflow: hidden; cursor: pointer;
+      background: 'var(--card-bg)'; aspect-ratio: 4/3;
     }
-    .project-card:nth-child(1) { grid-column: span 7; aspect-ratio: 16/10; }
-    .project-card:nth-child(2) { grid-column: span 5; aspect-ratio: 4/3; }
-    .project-card:nth-child(3) { grid-column: span 4; aspect-ratio: 4/3; }
-    .project-card:nth-child(4) { grid-column: span 8; aspect-ratio: 16/9; }
-    .project-card:nth-child(5) { grid-column: span 6; aspect-ratio: 4/3; }
-    .project-card:nth-child(6) { grid-column: span 6; aspect-ratio: 4/3; }
-
-    .card-img-wrap {
-      width: 100%;
-      height: 100%;
-      position: absolute;
-      inset: 0;
-    }
-    .card-img-wrap img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94);
-    }
+    .card-img-wrap { position: absolute; inset: 0; }
+    .card-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94); }
     .project-card:hover .card-img-wrap img { transform: scale(1.04); }
-
-    .card-placeholder-content {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-    }
-    .card-placeholder-icon {
-      width: 48px;
-      height: 48px;
-      border: 1px dashed var(--border);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--text-dimmer);
-      font-size: 18px;
-    }
-    .card-placeholder-text {
-      font-size: 10px;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--text-dimmer);
-    }
-
     .card-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to top, rgba(16,16,14,0.9) 0%, transparent 60%);
-      opacity: 0;
-      transition: opacity var(--transition);
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      padding: 28px;
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(16,16,14,0.92) 0%, transparent 60%);
+      opacity: 0; transition: opacity var(--transition);
+      display: flex; flex-direction: column; justify-content: flex-end; padding: 24px;
     }
     [data-theme="light"] .card-overlay {
-      background: linear-gradient(to top, rgba(244,241,236,0.92) 0%, transparent 60%);
+      background: linear-gradient(to top, rgba(244,241,236,0.95) 0%, transparent 60%);
     }
     .project-card:hover .card-overlay { opacity: 1; }
     .card-title {
-      font-family: var(--font-display);
-      font-size: 22px;
-      font-weight: 400;
-      color: var(--text);
-      margin-bottom: 4px;
-      transform: translateY(8px);
-      transition: transform var(--transition);
+      font-size: 24px; font-weight: 700; color: var(--text);
+      margin-bottom: 4px; transform: translateY(8px); transition: transform var(--transition);
     }
     .card-cat {
-      font-size: 10px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--accent);
-      transform: translateY(8px);
-      transition: transform var(--transition) 0.04s;
+      font-size: 16px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--accent); transform: translateY(8px); transition: transform var(--transition) 0.04s;
     }
-    .project-card:hover .card-title,
-    .project-card:hover .card-cat { transform: translateY(0); }
+    .project-card:hover .card-title, .project-card:hover .card-cat { transform: translateY(0); }
 
     /* ── About ── */
     #about { background: var(--bg2); }
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
-      align-items: start;
-    }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
     .about-img-wrap {
-      aspect-ratio: 3/4;
-      background: var(--card-bg);
-      border-radius: var(--radius);
-      overflow: hidden;
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      width: 85%; aspect-ratio: 1/1; background: var(--card-bg);
+      border-radius: var(--radius); overflow: hidden;
+      position: relative; display: flex; align-items: center; justify-content: center;
     }
     .about-img-wrap img { object-fit: cover; height: 100%; display: none; }
-    .about-img-placeholder {
-      text-align: center;
-    }
-    .about-img-placeholder-icon {
-      font-size: 40px;
-      margin-bottom: 12px;
-      opacity: 0.3;
-    }
-    .about-img-placeholder-text {
-      font-size: 10px;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--text-dimmer);
-    }
-    .about-text { padding-top: 16px; }
-    .about-name {
-      font-family: var(--font-display);
-      font-size: clamp(40px, 5vw, 64px);
-      font-weight: 300;
-      line-height: 1.05;
-      margin-bottom: 8px;
-    }
-    .about-role {
-      font-size: 12px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 36px;
-    }
-    .about-bio {
-      font-size: 15px;
-      color: var(--text-dim);
-      line-height: 1.85;
-      margin-bottom: 48px;
-    }
+    .about-img-placeholder { text-align: center; }
+    .about-img-placeholder-icon { font-size: 40px; margin-bottom: 12px; opacity: 0.3; }
+    .about-img-placeholder-text { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-dimmer); }
+    .about-text { padding-top: 18px; margin-left: -30px; }
+    .about-name { font-size: clamp(40px, 5vw, 64px); font-weight: 800; line-height: 1.05; margin-bottom: 8px; }
+    .about-role { font-size: 16px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 36px; font-weight: 400; }
+    .about-bio { font-size: 18px; color: var(--text-dim); line-height: 1.85; margin-bottom: 48px; font-weight: 300; }
     .about-bio p + p { margin-top: 16px; }
     .vita-items { display: flex; flex-direction: column; gap: 24px; }
-    .vita-item {
-      display: grid;
-      grid-template-columns: 100px 1fr;
-      gap: 20px;
-      padding-bottom: 24px;
-      border-bottom: 1px solid var(--border);
-    }
+    .vita-item { display: grid; grid-template-columns: 100px 1fr; gap: 20px; padding-bottom: 24px; border-bottom: 1px solid var(--border); }
     .vita-item:last-child { border-bottom: none; }
-    .vita-year {
-      font-size: 12px;
-      letter-spacing: 0.06em;
-      color: var(--accent);
-      padding-top: 2px;
-    }
-    .vita-title {
-      font-size: 14px;
-      font-weight: 500;
-      margin-bottom: 3px;
-    }
-    .vita-place {
-      font-size: 13px;
-      color: var(--text-dim);
-    }
+    .vita-year { font-size: 15px; letter-spacing: 0.06em; color: var(--accent); padding-top: 2px; font-weight: 400; }
+    .vita-title { font-size: 18px; font-weight: 600; margin-bottom: 3px; }
+    .vita-place { font-size: 17px; color: var(--text-dim); font-weight: 300; }
 
     /* ── Skills ── */
     #skills { background: var(--bg); }
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 3px;
-    }
-    .skill-card {
-      background: var(--card-bg);
-      padding: 32px 28px;
-      border-radius: var(--radius);
-      transition: background var(--transition);
-      position: relative;
-      overflow: hidden;
-    }
-    .skill-card::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: var(--accent-subtle);
-      opacity: 0;
-      transition: opacity var(--transition);
-    }
-    .skill-card:hover::before { opacity: 1; }
-    .skill-icon {
-      font-size: 28px;
-      margin-bottom: 16px;
-      display: block;
-    }
+    .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3px; }
+.skill-card {
+  padding: 48px 40px;
+  border-radius: var(--radius);
+  transition: filter var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+.skill-card:hover { filter: brightness(1.08); }
+.skill-card:nth-child(1) { background: #c46a3f; }
+.skill-card:nth-child(2) { background: #d18a3f; }
+.skill-card:nth-child(3) { background: #2e5f5f; }
+.skill-card:nth-child(4) { background: #3f8a8a; }
+.skill-card:nth-child(5) { background: #8a4250; }
+.skill-card:nth-child(6) { background: #5f7a3f; }
+    .skill-icon { font-size: 40px; margin-bottom: 20px; display: block; }
     .skill-name {
-      font-size: 13px;
-      font-weight: 500;
-      margin-bottom: 6px;
-    }
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #ffffff;
+}
     .skill-desc {
-      font-size: 12px;
-      color: var(--text-dim);
-      line-height: 1.6;
-    }
-    .skill-bar {
-      margin-top: 16px;
-      height: 1px;
-      background: var(--border);
-      position: relative;
-    }
+  font-size: 18px;
+  color: rgba(255,255,255,0.75);
+  line-height: 1.65;
+  font-weight: 400;
+}
+    .skill-bar { margin-top: 24px; height: 1px; background: var(--border); position: relative; }
     .skill-bar-fill {
-      position: absolute;
-      top: 0; left: 0; bottom: 0;
+      position: absolute; top: 0; left: 0; bottom: 0;
       background: var(--accent);
-      transition: width 1s cubic-bezier(0.25,0.46,0.45,0.94);
-      width: 0;
+      transition: width 1s cubic-bezier(0.25,0.46,0.45,0.94); width: 0;
     }
     .skill-bar-fill.animated { width: var(--fill); }
 
     /* ── Contact ── */
     #contact { background: var(--bg2); }
-    .contact-inner {
-      max-width: 640px;
-    }
-    .contact-intro {
-      font-family: var(--font-display);
-      font-size: clamp(28px, 4vw, 48px);
-      font-weight: 300;
-      line-height: 1.2;
-      margin-bottom: 48px;
-    }
-    .contact-intro em { font-style: italic; color: var(--accent); }
+.contact-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+  max-width: 100%;
+}
+    .contact-intro { font-size: clamp(46px, 5vw, 62px); font-weight: 900; line-height: 1.15; margin-bottom: 0; }
+    .contact-intro em { font-style: italic; color: var(--accent); font-weight: 900; }
+    .contact-intro .sub { display: block; font-size: clamp(22px, 3vw, 34px); font-weight: 300; margin-top: 8px; }
     .contact-items { display: flex; flex-direction: column; gap: 0; }
     .contact-item {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 20px 0;
-      border-bottom: 1px solid var(--border);
-      transition: all 0.2s;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 20px 0; border-bottom: 1px solid var(--border); transition: all 0.2s;
     }
     .contact-item:first-child { border-top: 1px solid var(--border); }
     .contact-item:hover { padding-left: 8px; }
-    .contact-label {
-      font-size: 10px;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--text-dimmer);
-      width: 100px;
-    }
-    .contact-value {
-      flex: 1;
-      font-size: 15px;
-      color: var(--text);
-    }
-    .contact-arrow {
-      font-size: 16px;
-      color: var(--text-dimmer);
-      transition: transform 0.2s, color 0.2s;
-    }
-    .contact-item:hover .contact-arrow {
-      transform: translateX(4px);
-      color: var(--accent);
-    }
+    .contact-label { font-size: 14px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-dimmer); width: 100px; font-weight: 400; }
+    .contact-value { flex: 1; font-size: 18px; color: var(--text); font-weight: 300; }
+    .contact-arrow { font-size: 16px; color: var(--text-dimmer); transition: transform 0.2s, color 0.2s; }
+    .contact-item:hover .contact-arrow { transform: translateX(4px); color: var(--accent); }
 
     /* ── Footer ── */
     footer {
-      background: var(--bg);
-      padding: 32px 40px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+      background: var(--bg); padding: 16px 40px;
+      display: flex; align-items: center; justify-content: space-between;
       border-top: 1px solid var(--border);
     }
-    .footer-name {
-      font-family: var(--font-display);
-      font-size: 15px;
-      color: var(--text-dim);
-    }
-    .footer-copy {
-      font-size: 11px;
-      color: var(--text-dimmer);
-      letter-spacing: 0.06em;
-    }
-
-    /* ── Mobile menu ── */
-    .mobile-menu {
-      display: none;
-      position: fixed;
-      top: 64px; left: 0; right: 0;
-      background: var(--nav-bg);
-      backdrop-filter: blur(16px);
-      border-bottom: 1px solid var(--border);
-      padding: 24px 40px;
-      z-index: 99;
-      flex-direction: column;
-      gap: 20px;
-    }
-    .mobile-menu.open { display: flex; }
-    .mobile-menu a {
-      font-size: 13px;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--text-dim);
-    }
+    .footer-name { font-size: 15px; font-weight: 600; color: var(--text-dim); }
+    .footer-copy { font-size: 11px; color: var(--text-dimmer); letter-spacing: 0.06em; font-weight: 300; }
 
     /* ── Animations ── */
     @keyframes fadeUp {
@@ -703,28 +389,331 @@
       100% { left: 100%; }
     }
     .reveal {
-      opacity: 0;
-      transform: translateY(28px);
+      opacity: 0; transform: translateY(28px);
       transition: opacity 0.7s, transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94);
     }
     .reveal.visible { opacity: 1; transform: none; }
 
+    /* ── Bubble Canvas ── */
+    #bubble-canvas {
+      position: absolute; inset: 0; width: 100%; height: 100%;
+      z-index: 2; pointer-events: none;
+    }
+
     /* ── Responsive ── */
     @media (max-width: 900px) {
+  .hero-title { font-size: clamp(60px, 14vw, 140px); }
+  .hero-sub { font-size: clamp(18px, 3vw, 28px); }
+  .hero-label { font-size: 11px; }
       nav { padding: 0 24px; }
       .nav-links { display: none; }
       .theme-toggle { display: none; }
       .hamburger { display: flex; }
       section { padding: 72px 24px; }
-      .hero-content { padding: 0 24px 60px; }
-      .hero-scroll { right: 24px; }
-      .portfolio-grid { grid-template-columns: 1fr; gap: 3px; }
-      .project-card:nth-child(n) { grid-column: span 1; aspect-ratio: 4/3; }
+      .category-grid { grid-template-columns: 1fr; }
+      .portfolio-grid { grid-template-columns: 1fr; }
+      .skills-grid { grid-template-columns: 1fr; }
       .about-grid { grid-template-columns: 1fr; gap: 40px; }
       .about-img-wrap { aspect-ratio: 4/3; }
       footer { flex-direction: column; gap: 8px; text-align: center; }
+      .hero-sub { display: none; }
     }
+/* ── Category Detail Overlay ── */
+.category-detail {
+  position: fixed;
+  top: 64px; left: 0; right: 0; bottom: 0;
+  z-index: 90;
+  overflow-y: auto;
+  transform: translateY(100%);
+  opacity: 0;
+  transition: transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94), opacity 0.5s ease;
+  pointer-events: none;
+}
+.category-detail.open {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+.detail-video   { background: #2e5f5f; }
+.detail-grafik  { background: #c46a3f; }
+.detail-produkt { background: #8a4250; }
+
+.detail-close {
+  position: sticky;
+  top: 0; z-index: 5;
+  display: flex;
+  justify-content: flex-end;
+  padding: 24px 40px 0;
+  background: inherit;
+}
+.detail-close button {
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.25);
+  color: #fff;
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  font-size: 20px;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: background 0.2s, transform 0.2s;
+}
+.detail-close button:hover {
+  background: rgba(255,255,255,0.25);
+  transform: rotate(90deg);
+}
+.detail-header {
+  padding: 20px 40px 60px;
+  display: flex;
+  align-items: baseline;
+  gap: 20px;
+}
+.detail-label {
+  font-size: 14px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.7);
+  white-space: nowrap;
+}
+.detail-header .divider {
+  flex: 1; height: 1px;
+  background: rgba(255,255,255,0.25);
+  margin-bottom: 6px;
+}
+.detail-title {
+  font-size: clamp(28px, 4vw, 56px);
+  font-weight: 800;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+}
+
+/* Projekte Container */
+.detail-projects {
+  display: flex;
+  flex-direction: column;
+  gap: 120px;
+  padding: 40px 0 40px;
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Einzelnes Projekt – vertikal gestapelt */
+.detail-project {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.7s, transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94);
+  color: #fff;
+}
+.detail-project.visible { opacity: 1; transform: translateY(0); }
+
+/* Text oben: Titel links, Kategorie rechts */
+.detail-project-text-top {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 20px;
+}
+.detail-project-num {
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  color: rgba(255,255,255,0.45);
+  margin-bottom: 4px;
+}
+.detail-project-title {
+  font-size: clamp(22px, 2.5vw, 34px);
+  font-weight: 700;
+  line-height: 1.1;
+  color: #fff;
+}
+.detail-project-cat {
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.7);
+  white-space: nowrap;
+}
+
+/* Bildbereich */
+.detail-project-img {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 8px;
+  width: 100%;
+}
+.detail-project.reverse .detail-project-img {
+  grid-template-columns: 2fr 1fr;
+}
+
+/* Slideshow überschreibt das Grid */
+.detail-project-img.is-slideshow {
+  display: block;
+  grid-template-columns: unset;
+  height: auto;
+}
+
+.detail-project-img-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  order: 1;
+  min-width: 0;
+  height: 500px;
+}
+.detail-project.reverse .detail-project-img-stack { order: 2; }
+.detail-project.reverse .detail-project-img-main  { order: 1; }
+.detail-project-img-stack > div {
+  flex: 1;
+  border-radius: 4px;
+  overflow: hidden;
+  min-height: 0;
+}
+.detail-project-img-main {
+  order: 2;
+  border-radius: 4px;
+  overflow: hidden;
+  min-width: 0;
+  aspect-ratio: 16/9;
+}
+.detail-project-img-stack img,
+.detail-project-img-stack video,
+.detail-project-img-main img,
+.detail-project-img-main video {
+  width: 100%; height: 100%;
+  object-fit: cover; display: block;
+}
+
+/* Text unten */
+.detail-project-text-bottom { max-width: 100%; }
+.detail-project-desc {
+  font-size: 16px;
+  font-weight: 450;
+  line-height: 1.8;
+  color: rgba(255,255,255,0.85);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .detail-projects { padding: 0 24px 40px; gap: 80px; }
+  .detail-project-img,
+  .detail-project.reverse .detail-project-img { grid-template-columns: 1fr; }
+  .detail-project-img-stack { flex-direction: row; height: 160px; }
+  .detail-project-text-top { flex-direction: column; gap: 4px; }
+  .detail-header { padding: 20px 24px 40px; }
+}
+
+/* ── Vimeo Video Lightbox ── */
+.vimeo-thumb-wrap {
+  position: relative;
+  width: 100%; height: 100%;
+  cursor: pointer;
+  overflow: hidden;
+}
+.vimeo-thumb-wrap img {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform 0.5s ease, filter 0.5s ease;
+}
+.vimeo-thumb-wrap:hover img {
+  transform: scale(1.06);
+  filter: brightness(0.7);
+}
+.vimeo-play-btn {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 64px; height: 64px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.92);
+  display: flex; align-items: center; justify-content: center;
+  transition: transform 0.3s, background 0.3s;
+  pointer-events: none;
+}
+.vimeo-thumb-wrap:hover .vimeo-play-btn {
+  transform: translate(-50%, -50%) scale(1.1);
+  background: #fff;
+}
+.vimeo-play-btn::after {
+  content: '';
+  border-left: 18px solid #1a1a18;
+  border-top: 11px solid transparent;
+  border-bottom: 11px solid transparent;
+  margin-left: 4px;
+}
+/* ── Multi-Bild Slideshow ── */
+.slideshow-wrap {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 4px;
+  height: 420px;
+}
+.slideshow-track {
+  display: flex;
+  gap: 4px;
+  height: 100%;
+  transition: transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94);
+  will-change: transform;
+}
+.slideshow-slide {
+  flex-shrink: 0;
+  height: 100%;
+  border-radius: 4px;
+  overflow: hidden;
+}
+.slideshow-slide.portrait { width: 280px; }
+.slideshow-slide.landscape { width: 600px; }
+.slideshow-slide img,
+.slideshow-slide video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.slideshow-btn {
+  position: absolute;
+  top: 50%; transform: translateY(-50%);
+  z-index: 5;
+  background: rgba(0,0,0,0.5);
+  border: 1px solid rgba(255,255,255,0.3);
+  color: #fff;
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  font-size: 18px;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: background 0.2s;
+}
+.slideshow-btn:hover { background: rgba(0,0,0,0.8); }
+.slideshow-btn.prev { left: 12px; }
+.slideshow-btn.next { right: 12px; }
+
+/* ── Detail Projekt Abwechslung ── */
+.detail-video .detail-project.alt-bg,
+.detail-grafik .detail-project.alt-bg,
+.detail-produkt .detail-project.alt-bg {
+  background: rgba(255,255,255,0.12);
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  padding-left: calc(50vw - 50% + 40px);
+  padding-right: calc(50vw - 50% + 40px);
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+.detail-project-desc a {
+  color: #72ced4;
+  text-decoration: underline;
+  transition: color 0.2s;
+}
+.detail-project-desc a:hover {
+  color: #ffffff;
+}
   </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet" />
 </head>
 <body>
 
@@ -734,20 +723,20 @@
     <div class="logo-placeholder" id="logo-btn" title="Logo hochladen">
       I
       <img id="logo-img" src="" alt="Logo" />
-      <span class="logo-upload-hint">Logo hochladen</span>
     </div>
-    <span class="brand-name">Isa Freese Design</span>
+    <span class="brand-name">Isa Freese</span>
   </div>
   <div class="nav-right">
-    <ul class="nav-links">
+<ul class="nav-links">
       <li><a href="#home">Home</a></li>
       <li><a href="#portfolio">Portfolio</a></li>
       <li><a href="#about">About Me</a></li>
+      <li><a href="#skills">Skills</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
     <button class="theme-toggle" id="theme-btn" aria-label="Modus wechseln">
-      <span class="theme-icon">☽</span>
-      <span id="theme-label">Hell</span>
+      <span class="theme-icon">☀</span>
+      <span id="theme-label">Dunkel</span>
     </button>
     <button class="hamburger" id="hamburger" aria-label="Menü">
       <span></span><span></span><span></span>
@@ -755,31 +744,68 @@
   </div>
 </nav>
 
-<!-- Mobile Menu -->
-<div class="mobile-menu" id="mobile-menu">
-  <a href="#home" onclick="closeMobile()">Home</a>
-  <a href="#portfolio" onclick="closeMobile()">Portfolio</a>
-  <a href="#about" onclick="closeMobile()">About Me</a>
-  <a href="#contact" onclick="closeMobile()">Contact</a>
-</div>
-
 <!-- HERO -->
 <section id="home">
-  <div class="hero-bg">
-    <div class="hero-bg-pattern"></div>
-    <div class="hero-bg-text">ISA</div>
-   <img class="hero-bg-placeholder" id="hero-bg-img" src="images/LichtInstallation_fern_blau.webp" alt="" style="display:block; opacity:0.6" />
-    <label class="hero-upload-zone" for="hero-file-input" title="Hintergrundbild hochladen">
-      <div class="hero-upload-hint">＋ Hintergrundbild hochladen</div>
-    </label>
-    <input type="file" id="hero-file-input" accept="image/*" />
-  </div>
   <div class="hero-overlay"></div>
-  <div class="hero-content">
-    <p class="hero-label">Immersive Videokunst, Grafik- & Motiondesign </p>
-    <h1 class="hero-title">Visuelle Arbeit,<br />die <em>bewegt.</em></h1>
-    <p class="hero-sub">Ich gestalte immersive Rauminstallationen, Videokonzepte, Motion Graphics und visuelle Konzepte — für Ausstellungen, Print- und Onlinemedien.</p>
+
+  <!-- Label oben -->
+  <div class="hero-top">
+    <p class="hero-label">Immersive Videokunst, Grafikdesign, Illustration, Motiondesign, Produktdesign</p>
   </div>
+
+  <!-- Bildreihen + Titel -->
+  <div class="hero-rows">
+    <div class="hero-row-wrap">
+      <div class="hero-row row-left">
+        <img src="images/BA_Exposion.webp" alt="" />
+        <img src="images/LichtInstallation_nah_pink.webp" alt="" />
+        <img src="images/Illustration_Virdipa_2.webp" alt="" />
+        <img src="images/MA-Ausstellung_2.webp" alt="" />
+        <img src="images/DiViFaG_Projektpartner.webp" alt="" />
+        <img src="images/LichtInstallation_fern_bunt.webp" alt="" />
+        <img src="images/DackelLogo ohne Schrift_zweifarbiger Hintergrund.webp" alt="" />
+        <img src="images/MA-Ausstellung_1.webp" alt="" />
+        <img src="images/BA_Exposion.webp" alt="" />
+        <img src="images/LichtInstallation_nah_pink.webp" alt="" />
+        <img src="images/Illustration_Virdipa_2.webp" alt="" />
+        <img src="images/MA-Ausstellung_2.webp" alt="" />
+        <img src="images/BA_Aufgebaut.webp" alt="" />
+        <img src="images/MA-Ausstellung_1.webp" alt="" />
+      </div>
+    </div>
+    <div class="hero-row-wrap">
+      <div class="hero-row row-right">
+        <img src="images/MA-Ausstellung_4.webp" alt="" />
+        <img src="images/LichtInstallation_nah_bunt.webp" alt="" />
+        <img src="images/Videoessay_2.webp" alt="" />
+        <img src="images/Grenzenlos-Erde-waagerecht.webp" alt="" />
+        <img src="images/Illustration_Virdipa_1.webp" alt="" />
+        <img src="images/Sprinter_Seite.webp" alt="" />
+        <img src="images/LichtInstallation_fern_blau.webp" alt="" />
+        <img src="images/ToGo_Rendering2_bearbeitet.webp" alt="" />
+        <img src="images/MA-Ausstellung_4.webp" alt="" />
+        <img src="images/LichtInstallation_nah_bunt.webp" alt="" />
+        <img src="images/Videoessay_1.webp" alt="" />
+        <img src="images/Grenzenlos-Erde-waagerecht.webp" alt="" />
+        <img src="images/Illustration_Virdipa_1.webp" alt="" />
+        <img src="images/Sprinter_Seite.webp" alt="" />
+        <img src="images/LichtInstallation_fern_blau.webp" alt="" />
+        <img src="images/ToGo_Rendering2_bearbeitet.webp" alt="" />
+      </div>
+    </div>
+
+    <!-- Titel INNERHALB von hero-rows -->
+    <div class="hero-title-block">
+      <h1 class="hero-title">PORTFOLIO</h1>
+    </div>
+
+  </div>
+
+  <!-- Name + Subtext darunter -->
+  <div class="hero-bottom">
+    <p class="hero-sub">ISA FREESE</p>
+  </div>
+
   <div class="hero-scroll">
     <div class="scroll-line"></div>
     Scroll
@@ -787,87 +813,77 @@
 </section>
 
 <!-- PORTFOLIO -->
-<section id="portfolio">
-  <div class="section-header reveal">
-    <span class="section-label">Ausgewählte Arbeiten</span>
-    <h2 class="section-title">Portfolio</h2>
-    <div class="divider"></div>
+<section id="portfolio" style="padding: 0;">
+
+<!-- VIDEO -->
+  <div class="portfolio-category cat-video" onclick="openDetail('video')" style="cursor:pointer;">
+    <div class="portfolio-cat-header-wrap reveal" onclick="openDetail('video')" style="cursor:pointer;">
+      <span class="portfolio-cat-label">Ausgewählte Arbeiten</span>
+      <h2 class="portfolio-cat-title">Videoprojekte</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="portfolio-grid">
+      <div class="project-card" onclick="openDetailAndScroll('video', 'projekt-masterarbeit')">
+        <div class="card-img-wrap"><img src="images/MA-Ausstellung_4.webp" alt="Videoinstallation über KI Propaganda" style="display:block" /></div>
+        <div class="card-overlay"><div class="card-title">Gefühlte Wahrheiten · MA</div><div class="card-cat">Immersive politische Videoinstallation · 2026</div></div>
+      </div>
+      <div class="project-card" onclick="openDetailAndScroll('video', 'projekt-diversity')">
+        <div class="card-img-wrap"><img src="images/LichtInstallation_nah_bunt.webp" alt="Lichtreaktive Installation" style="display:block" /></div>
+        <div class="card-overlay"><div class="card-title">Diversity of Light</div><div class="card-cat">Immersive lichtreaktive Installation · 2025</div></div>
+      </div>
+      <div class="project-card" onclick="openDetailAndScroll('video', 'projekt-videoessay')">
+        <div class="card-img-wrap"><img src="images/Videoessay_2.webp" alt="KI Experimente" style="display:block" /></div>
+        <div class="card-overlay"><div class="card-title">Die Sprache der Demokratie</div><div class="card-cat">Video Essay · 2025</div></div>
+      </div>
+    </div>
   </div>
-  <div class="portfolio-grid reveal">
 
-    <div class="project-card">
-      <div class="card-img-wrap"><img src="images/MA-Ausstellung_4.webp" alt="Videoinstallation über KI Propaganda" style="display:block" /></div>
-      <div class="card-placeholder-content">
-        <div class="card-placeholder-icon">⊕</div>
-        <span class="card-placeholder-text">Bild einfügen</span>
+<!-- GRAFIK -->
+  <div class="portfolio-category cat-grafik" onclick="openDetail('grafik')" style="cursor:pointer;">
+<div class="portfolio-cat-header-wrap reveal">
+  <span class="portfolio-cat-label">Ausgewählte Arbeiten</span>
+  <h2 class="portfolio-cat-title">Grafikdesign & Illustration</h2>
+  <div class="divider"></div>
+</div>
+    <div class="portfolio-grid">
+      <div class="project-card" onclick="openDetailAndScroll('grafik', 'projekt-divifag')">
+        <div class="card-img-wrap"><img src="images/Animation_Divifag_LogoIntro.gif" alt="Motion Graphics" style="display:block" /></div>
+        <div class="card-overlay"><div class="card-title">Logo & Corporate Design</div><div class="card-cat">Öffentlichkeitsarbeit DiViFaG · 2021-2023</div></div>
       </div>
-      <div class="card-overlay">
-        <div class="card-title">Gefühlte Wahrheiten</div>
-        <div class="card-cat">Immersive Videoinstallation · 2026</div>
+      <div class="project-card" onclick="openDetailAndScroll('grafik', 'projekt-virdipa')">
+        <div class="card-img-wrap"><img src="images/ViRDiPA Illustration weiß.webp" alt="Illustrationen" style="display:block" /></div>
+        <div class="card-overlay"><div class="card-title">Illustration & Grafikdesign</div><div class="card-cat">Öffentlichkeitsarbeit ViRDiPA · 2023–2024</div></div>
+      </div>
+      <div class="project-card" onclick="openDetailAndScroll('grafik', 'projekt-grenzenlos')">
+        <div class="card-img-wrap"><img src="images/Grenzenlosplakat - ohne alles.webp" alt="Projekt" style="display:block" /></div>
+        <div class="card-overlay"><div class="card-title">Print- & Onlinemedien</div><div class="card-cat">Auftragsarbeiten · 2021-heute</div></div>
       </div>
     </div>
-
-    <div class="project-card">
-      <div class="card-img-wrap"><img src="images/LichtInstallation_nah_bunt.webp" alt="Lichtreaktive Installation" style="display:block" /></div>
-      <div class="card-placeholder-content">
-        <div class="card-placeholder-icon">⊕</div>
-        <span class="card-placeholder-text">Bild einfügen</span>
-      </div>
-      <div class="card-overlay">
-        <div class="card-title">Diversity of light</div>
-        <div class="card-cat">Lichtreaktive Installation · 2025</div>
-      </div>
-    </div>
-
-    <div class="project-card">
-      <div class="card-img-wrap"><img src="images/" alt="Bewegtbild-Experimente mit generativer KI" style="display:block" /></div>
-      <div class="card-placeholder-content">
-        <div class="card-placeholder-icon">⊕</div>
-        <span class="card-placeholder-text">Bild einfügen</span>
-      </div>
-      <div class="card-overlay">
-        <div class="card-title">Was kann KI?</div>
-        <div class="card-cat">Bewegtbild-Experimente mit generativer KI · 2025 / 2026</div>
-      </div>
-    </div>
-
-    <div class="project-card">
-      <div class="card-img-wrap"><img src="images/Illustration_Virdipa_1.webp" alt="Illustrationen und Grafikdesign" style="display:block" /></div>
-      <div class="card-placeholder-content">
-        <div class="card-placeholder-icon">⊕</div>
-        <span class="card-placeholder-text">Bild einfügen</span>
-      </div>
-      <div class="card-overlay">
-        <div class="card-title">Illustration & Grafikdesign</div>
-        <div class="card-cat">Gestaltung von Lehrmaterialien, Erklärvideoproduktion & Öffentlichkeitsarbeit · 2021-2023</div>
-      </div>
-    </div>
-
-    <div class="project-card">
-      <div class="card-img-wrap"><img src="images/Sprinter_Seite.webp" alt="Vanausbau & modulares Campingkonzept" style="display:block" /></div>
-      <div class="card-placeholder-content">
-        <div class="card-placeholder-icon">⊕</div>
-        <span class="card-placeholder-text">Bild einfügen</span>
-      </div>
-      <div class="card-overlay">
-        <div class="card-title">Vanausbau & modulares Campingkonzept</div>
-        <div class="card-cat">Produktdesign · 2020 / 2021</div>
-      </div>
-    </div>
-
-    <div class="project-card">
-      <div class="card-img-wrap"><img src="images/Drohne_nah.webp" alt="Weitere Projekte" style="display:block" /></div>
-      <div class="card-placeholder-content">
-        <div class="card-placeholder-icon">⊕</div>
-        <span class="card-placeholder-text">Bild einfügen</span>
-      </div>
-      <div class="card-overlay">
-        <div class="card-title">Weitere Projekte</div>
-        <div class="card-cat">Produktdesign · 2018-2021</div>
-      </div>
-    </div>
-
   </div>
+
+<!-- PRODUKT -->
+  <div class="portfolio-category cat-produkt" onclick="openDetail('produkt')" style="cursor:pointer;">
+<div class="portfolio-cat-header-wrap reveal">
+  <span class="portfolio-cat-label">Ausgewählte Arbeiten</span>
+  <h2 class="portfolio-cat-title">Produktdesign</h2>
+  <div class="divider"></div>
+</div>
+    <div class="portfolio-grid">
+      <div class="project-card" onclick="openDetailAndScroll('produkt', 'projekt-vanausbau')">
+        <div class="card-img-wrap"><img src="images/Sprinter_Seite.webp" alt="Vanausbau" style="display:block" /></div>
+        <div class="card-overlay"><div class="card-title">Vanausbau</div><div class="card-cat">Produktdesign · 2019 / 2020</div></div>
+      </div>
+      <div class="project-card" onclick="openDetailAndScroll('produkt', 'projekt-bachelorarbeit')">
+        <div class="card-img-wrap"><img src="images/BA Explosion weiß.webp" alt="Modulares Campingkonzept" style="display:block" /></div>
+        <div class="card-overlay"><div class="card-title">Modulares Campingkonzept · BA</div><div class="card-cat">Produktdesign · 2021</div></div>
+      </div>
+      <div class="project-card" onclick="openDetailAndScroll('produkt', 'projekt-produktdesign-3')">
+        <div class="card-img-wrap"><img src="images/ToGo_Rendering2_bearbeitet.webp" alt="Projekt" style="display:block" /></div>
+        <div class="card-overlay"><div class="card-title">Weitere Projekte</div><div class="card-cat">Produktdesign · 2018–2021</div></div>
+      </div>
+    </div>
+  </div>
+
 </section>
 
 <!-- ABOUT -->
@@ -879,18 +895,15 @@
   </div>
   <div class="about-grid">
     <div class="about-img-wrap reveal">
-      <img id="about-img" src="" alt="Isa" />
-      <div class="about-img-placeholder">
-        <div class="about-img-placeholder-icon">◎</div>
-        <div class="about-img-placeholder-text">Dein Foto hier</div>
-      </div>
+      <img id="about-img" src="images/Isa.webp" alt="Foto von Isa" style="display:block;" />
+      <div class="about-img-placeholder"></div>
     </div>
     <div class="about-text reveal">
-      <h2 class="about-name">Isa</h2>
+      <h2 class="about-name">Isa Freese</h2>
       <p class="about-role">Videokünstlerin, Motion- & Grafikdesignerin · Hannover</p>
       <div class="about-bio">
-        <p>In meiner gestalterischen Praxis entwickle ich immersive und interaktive Rauminstallationen, audiovisuelle Ausstellungsformate sowie Licht- und Projektionskonzepte. Neben meiner freien künsterlischen Arbeit habe ich als Grafikdesignerin Konzepte für die Öffentlichkeitsarbeit entwickelt, die von Logodesign über Illustration bis hin zur Entwicklung und Produktion von Erklärvideoformaten reichen.</p>
-        <p>Meine künsterlische Forschung erkundet die Möglichkeiten von KI-Bildgenerierung, abstrakten Videoformaten und bewegt sich an der Schnittstelle zwischen digitaler und analoger Installationskunst. Dabei thematisiere ich aktuelle gesellschaftspolitischen Fragen und möchte Räume für Dialog, Reflexion und Teilhabe schaffen, um der stetigen Polarisierung und medialen Überreizung entgegenzuwirken. Im Mittelpunkt steht dabei die Frage, wie Gestaltung zu einem bewussteren Umgang mit Information und emotionalisierender Sprache beitragen kann, um kritisches Denken, Differenzierung und Diskurs als demokratische Grundwerte zu erhalten.</p>
+        <p>In meiner gestalterischen Praxis entwickle ich immersive und interaktive Rauminstallationen, audiovisuelle Ausstellungsformate sowie Licht- und Projektionskonzepte. Neben meiner freien künstlerischen Arbeit habe ich als Grafikdesignerin Konzepte für die Öffentlichkeitsarbeit entwickelt, die von Logodesign über Illustration bis hin zur Entwicklung und Produktion von Erklärvideoformaten reichen.</p>
+        <p>Meine künstlerische Forschung erkundet die Möglichkeiten von KI-Bildgenerierung, abstrakten Videoformaten und bewegt sich an der Schnittstelle zwischen digitaler und analoger Installationskunst. Dabei thematisiere ich aktuelle gesellschaftspolitische Fragen und möchte Räume für Dialog, Reflexion und Teilhabe schaffen.</p>
       </div>
       <div class="vita-items">
         <div class="vita-item">
@@ -903,7 +916,7 @@
         <div class="vita-item">
           <span class="vita-year">2024 – 2026</span>
           <div>
-            <div class="vita-title">Masterstudium Gestaltung - Digital Media and Experiment</div>
+            <div class="vita-title">Masterstudium Gestaltung – Digital Media and Experiment</div>
             <div class="vita-place">Hochschule Bielefeld, Bielefeld</div>
           </div>
         </div>
@@ -927,41 +940,41 @@
     <div class="divider"></div>
   </div>
   <div class="skills-grid reveal">
+        <div class="skill-card">
+      <span class="skill-icon">▣</span>
+      <div class="skill-name">Grafikdesign & Illustration</div>
+      <div class="skill-desc">Layout, Typografie, Logo, Corporate Design, handgezeichnete & digitale Illustrationen, Gestaltung von Printprodukten</div>
+      <div class="skill-bar"><div class="skill-bar-fill" style="--fill: 100%"></div></div>
+    </div>
     <div class="skill-card">
       <span class="skill-icon">꩜</span>
       <div class="skill-name">Motiondesign</div>
-      <div class="skill-desc">Produktion von Motion Graphics und Animationen, Videoproduktion mit Kameraeqipment und KI, Postproduktion & Schnitt, Bewegtbild-Illustrationen, KI-Prompting</div>
-      <div class="skill-bar"><div class="skill-bar-fill" style="--fill: 95%"></div></div>
+      <div class="skill-desc">Motion Graphics und 2D-Animationen, Videoproduktion, Postproduktion & Schnitt, Bewegtbild-Illustrationen, KI-Prompting</div>
+      <div class="skill-bar"><div class="skill-bar-fill" style="--fill: 100%"></div></div>
     </div>
     <div class="skill-card">
       <span class="skill-icon">⬡</span>
-      <div class="skill-name">Immersive Design</div>
-      <div class="skill-desc">Konzeptentwicklung für immersive Erlebnisse, technische Planung & Umsetzung von Projektions- & Bildschirminstallationen, Projection Mapping, Lichtreaktive Kunst, Raumgestaltung</div>
-      <div class="skill-bar"><div class="skill-bar-fill" style="--fill: 90%"></div></div>
+      <div class="skill-name">Immersives Design</div>
+      <div class="skill-desc">Konzeptentwicklung für immersive Erlebnisse, technische Planung & Umsetzung, Projektions- & Bildschirminstallationen, Projection Mapping, Lichtreaktive Kunst, Raumgestaltung</div>
+      <div class="skill-bar"><div class="skill-bar-fill" style="--fill: 100%"></div></div>
     </div>
     <div class="skill-card">
       <span class="skill-icon">◈</span>
       <div class="skill-name">Konzept & Art Direction</div>
-      <div class="skill-desc">Thematische Recherche, Design Thinking, Entwicklung von Bildsprache & Stil, Storyboard schreiben, Produktion von Bildmaterial</div>
-      <div class="skill-bar"><div class="skill-bar-fill" style="--fill: 90%"></div></div>
-    </div>
-    <div class="skill-card">
-      <span class="skill-icon">▣</span>
-      <div class="skill-name">Grafikdesign</div>
-      <div class="skill-desc">Layout, Typografie, Logo, Corporate Design, handgezeichnete & digitale Illustrationen, Gestaltung von Printprodukten wie Plakate, Flyer, Visitenkarten, Broschüren</div>
-      <div class="skill-bar"><div class="skill-bar-fill" style="--fill: 80%"></div></div>
+      <div class="skill-desc">Thematische Recherche, Design Thinking, Bildsprache, Stilistik, Storyboard & Skript</div>
+      <div class="skill-bar"><div class="skill-bar-fill" style="--fill: 100%"></div></div>
     </div>
     <div class="skill-card">
       <span class="skill-icon">◉</span>
-      <div class="skill-name">Adobe Suite</div>
-      <div class="skill-desc">Illustrator, InDesign, After Effects, Premiere Pro, Photoshop</div>
-      <div class="skill-bar"><div class="skill-bar-fill" style="--fill: 75%"></div></div>
+      <div class="skill-name">Produktdesign</div>
+      <div class="skill-desc">Entwurfsprozess, 3D Modellierung, Materialstudien, Fertigungstechnik, Modellbau</div>
+      <div class="skill-bar"><div class="skill-bar-fill" style="--fill: 100%"></div></div>
     </div>
     <div class="skill-card">
       <span class="skill-icon">⬚</span>
       <div class="skill-name">Software Skills</div>
-      <div class="skill-desc">Rhinoceros, Keyshot, Resolume Arena, ProCreate, KI-Prompting</div>
-      <div class="skill-bar"><div class="skill-bar-fill" style="--fill: 80%"></div></div>
+      <div class="skill-desc">Adobe Suite, Affinity Designer, Rhinoceros, Keyshot, Resolume Arena, ProCreate, KI-Prompting</div>
+      <div class="skill-bar"><div class="skill-bar-fill" style="--fill: 100%"></div></div>
     </div>
   </div>
 </section>
@@ -974,14 +987,17 @@
     <div class="divider"></div>
   </div>
   <div class="contact-inner reveal">
-    <p class="contact-intro">Interesse an einer <em>Zusammenarbeit?</em><br />Ich freue mich von dir zu hören.</p>
+    <p class="contact-intro">
+      Interesse an einer <em>Zusammenarbeit?</em>
+      <span class="sub">Ich freue mich von dir zu hören!</span>
+    </p>
     <div class="contact-items">
-      <a class="contact-item" href="mailto:hallo@isa-portfolio.de">
+      <a class="contact-item" href="mailto:isa.freese@web.de">
         <span class="contact-label">E-Mail</span>
         <span class="contact-value">isa.freese@web.de</span>
         <span class="contact-arrow">→</span>
       </a>
-      <a class="contact-item" href="https://instagram.com/" target="_blank">
+      <a class="contact-item" href="https://instagram.com/isa.a.rt" target="_blank">
         <span class="contact-label">Instagram</span>
         <span class="contact-value">@isa.a.rt</span>
         <span class="contact-arrow">→</span>
@@ -1000,18 +1016,409 @@
   </div>
 </section>
 
+<!-- VIDEO DETAIL -->
+<div class="category-detail detail-video" id="detail-video">
+  <div class="detail-close">
+    <button onclick="closeDetail('video')" aria-label="Schließen">✕</button>
+  </div>
+  <div class="detail-header">
+    <span class="detail-label">Übersicht</span>
+    <h2 class="detail-title">Videoprojekte</h2>
+    <div class="divider"></div>
+  </div>
+  <div class="detail-projects">
+
+<div class="detail-project" id="projekt-masterarbeit">
+  <div class="detail-project-num">01 / Masterarbeit</div>
+  <div class="detail-project-text-top">
+    <div class="detail-project-title">Gefühlte Wahrheiten</div>
+    <div class="detail-project-cat">Immersive politische Videoinstallation · 2026</div>
+  </div>
+  <div class="detail-project-img">
+    <div class="detail-project-img-stack">
+      <div><img src="images/MA-Ausstellung_1.webp" alt="Detail" /></div>
+      <div><img src="images/MA-Ausstellung_2.webp" alt="Detail" /></div>
+    </div>
+    <div class="detail-project-img-main" id="vimeo-gefuehlte-wahrheiten">
+      <div class="vimeo-thumb-wrap" onclick="openVideo('1178797479', '0f9c531270', 'vimeo-gefuehlte-wahrheiten')">
+        <img src="images/MA-Ausstellung_3.webp" alt="Video Vorschau" />
+        <div class="vimeo-play-btn"></div>
+      </div>
+    </div>
+  </div>
+  <div class="detail-project-text-bottom">
+    <p class="detail-project-desc">In meiner Masterarbeit habe ich die Wirkung visueller politischer Narrative untersucht, die mithilfe generativer künstlicher Intelligenz verbreitet werden. Im Rahmen meiner künstlerischen Forschung analysierte ich den Einsatz KI-generierter Bildwelten in sozialen Medien, wobei ein besonderer Schwerpunkt auf den Veröffentlichungen der reichweitenstärksten deutschen Parteien lag.</p>
+    <p class="detail-project-desc">Meine Abschlussarbeit mündete in einer raumgreifenden, immersiven Videoinstallation. Mithilfe von selbst produzierten, emotional aufgeladenem Videomaterial wurde die Wirkung von politischer Bildsprache und KI-gestützter Propaganda erfahrbar gemacht. Ein zentraler Fokus lag bei dem Projekt auf der Überzeichnung und Reproduktion von KI-generierten Visualisierungen der Alternative für Deutschland (AfD), die im Jahr 2025 nahezu täglich auf den großen sozialen Plattformen verbreitet wurden. Der essayistische Kurzfilm zeigte den Besucher*innen wie KI-generierte Bilder und Videos eingesetzt werden, um rassistische, sexistische und diskriminierende Narrative zu verstärken und zu normalisieren.</p>
+    <p class="detail-project-desc">Das Videoessay ermutigt zur kritischen Auseinandersetzung mit den Auswirkungen KI-generierter Inhalte in der politischen Kommunikation und der Rolle von sozialen Plattformen und ihren Algorithmen im Bezug auf meinungsbildende Informationen. Die Arbeit schließt ab mit dem Wunsch persönliche, analoge Gesprächen den digitalen Medien entgegenzustellen und der Bedeutung von Ambiguitätstoleranz für die demokratische Gesellschaft.</p>
+    <p class="detail-project-desc">Die Installation konnte im Rahmen der Werkschau 2026 im Fachbereich Gestaltung der Hochschule Bielefeld besucht werden.</p>
+  </div>
+</div>
+
+<div class="detail-project reverse alt-bg" id="projekt-diversity">
+  <!-- Nummer -->
+  <div class="detail-project-num">02 / Installation</div>
+  <!-- Titel links + Kategorie rechts auf einer Linie -->
+  <div class="detail-project-text-top">
+    <div class="detail-project-title">Diversity of Light</div>
+    <div class="detail-project-cat">Immersive lichtreaktive Installation · 2025</div>
+  </div>
+  <!-- Bilder -->
+  <div class="detail-project-img">
+    <div class="detail-project-img-stack">
+      <div><img src="images/LichtInstallation_nah_pink.webp" alt="Detail" /></div>
+      <div><img src="images/LichtInstallation_fern_blau.webp" alt="Detail" /></div>
+    </div>
+    <div class="detail-project-img-main" id="vimeo-diversity">
+      <div class="vimeo-thumb-wrap" onclick="openVideo('1189741994', '25d63742f1', 'vimeo-diversity')">
+        <img src="images/LightDiversity Vorschaubild.webp" alt="Video Vorschau" />
+        <div class="vimeo-play-btn"></div>
+      </div>
+    </div>
+  </div>
+  <!-- Beschreibung unten -->
+  <div class="detail-project-text-bottom">
+    <p class="detail-project-desc">In diesem Projekt werden die physikalischen Besonderheiten von farbigem Licht in einer spielerischen und interaktiven Installation erfahrbar gemacht. Drei farbreaktive Plakate können unter buntem und weißem Licht erkundet werden. Die Installation besteht aus drei Beamern, die abwechselnd rotes, grünes und blaues Licht auf die Poster und die gegenüberliegende Wand projizieren. Treffen die drei Grundfarben gleichzeitig aufeinander, entsteht weißes Licht. Während der Farbwechsel werden zudem die Mischfarben Magenta, Cyan und Gelb sichtbar. Eine weitere Besonderheit zeigt sich im weißen Licht: Da es aus den drei Grundfarben zusammengesetzt ist, werfen Objekte und Besucher*innen farbige Schatten auf die Plakate und die dahinterliegende Wand. Damit werden auf den Plaketen immer wieder neue Elemente sichtbar oder unsichtbar.</p>
+    <p class="detail-project-desc">Das Projekt verbindet physikalische Phänomene mit einer spielerischen Ausstellungserfahrung und lädt dazu ein, Licht, Farbe und Wahrnehmung neu zu entdecken. Gleichzeitig versteht es sich als Metapher für die Vielschichtigkeit von Perspektiven, ganz nach dem Motto: Die Welt in einem anderen Licht sehen.</p>
+    <p class="detail-project-desc">Das Video verbindet die Dokumentation des Arbeitsprozesses mit den Aufnahmen aus der öffentlichen Ausstellung in der Hochschule Bielefeld.</p>
+  </div>
+</div>
+
+<div class="detail-project" id="projekt-videoessay">
+  <div class="detail-project-num">03 / Videoessay</div>
+  <div class="detail-project-text-top">
+    <div class="detail-project-title">Die Sprache der Demokratie</div>
+    <div class="detail-project-cat">Videoessay · 2025</div>
+  </div>
+  <div class="detail-project-img">
+    <div class="detail-project-img-stack">
+      <div><img src="images/Videoessay_2.webp" alt="Detail" /></div>
+      <div><img src="images/Screenshot.webp" alt="Detail" /></div>
+    </div>
+    <div class="detail-project-img-main" id="vimeo-demokratie">
+      <div class="vimeo-thumb-wrap" onclick="openVideo('1178815583', '22cde5183c', 'vimeo-demokratie')">
+        <img src="images/Videoessay_1.webp" alt="Video Vorschau" />
+        <div class="vimeo-play-btn"></div>
+      </div>
+    </div>
+  </div>
+  <div class="detail-project-text-bottom">
+    <p class="detail-project-desc">Dieses 10-minütige Videoessay beschäftigt sich mit dem Einfluss des Geschichtenerzählens auf die menschliche Evolution und Wahrnehmung. Inhaltliche Grundlage bilden die Bücher „Eine kurze Geschichte der Menschheit“ von Yuval Noah Harari sowie „Erzählende Affen“ von Samira El Ouassil und Friedemann Karig.</p>
+    <p class="detail-project-desc">Das Essay zeigt, wie stark menschliches Denken von Narrativen geprägt ist und wie insbesondere politische Ideologien von dieser Eigenschaft Gebrauch machen. In Zeiten von KI-generierten Inhalten, Desinformation und algorithmisch verstärkter Aufmerksamkeit verschwimmen die Grenzen zwischen Fiktion und Realität zunehmend. Vor allem emotional aufgeladene Inhalte verbreiten sich rasant, prägen öffentliche Diskurse und fördern vereinfachte oder polarisierende Sichtweisen.
+Demokratische Gesellschaften sind jedoch auf verlässliche Informationen und die Fähigkeit zur kritischen Einordnung angewiesen.</p>
+    <p class="detail-project-desc">Das Videoessay versteht sich daher als Plädoyer für kritisches Denken, den reflektierten Umgang mit Informationen und das bewusste Hinterfragen von Narrativen. Gleichzeitig lädt es dazu ein, Geschichten des Zusammenhalts, der Empathie und einer gemeinsamen Zukunft stärker in den gesellschaftlichen Diskurs einzubringen.</p>
+  </div>
+</div>
+
+<div class="detail-project reverse alt-bg" id="projekt-ki">
+  <div class="detail-project-num">04 / Was kann KI?</div>
+  <div class="detail-project-text-top">
+    <div class="detail-project-title">Experimente mit generativer KI</div>
+    <div class="detail-project-cat">Videoproduktion · 2025-2026</div>
+  </div>
+  <div class="detail-project-img">
+    <div class="detail-project-img-stack">
+      <div><video src="images/Hailuo Flüchtingswelle.mp4" autoplay loop muted playsinline></video></div>
+      <div><video src="images/Bubble.mp4" autoplay loop muted playsinline></video></div>
+    </div>
+    <div class="detail-project-img-main"><video src="images/Hailuo Ai - Geistige Brandstifter Smoke.mp4" autoplay loop muted playsinline></video></div>
+  </div>
+  <div class="detail-project-text-bottom">
+    <p class="detail-project-desc">Im Laufe meines Masterstudiums Digital Media and Experiment habe ich mich intensiv mit den Möglichkeiten und Grenzen generativer KI beschäftigt. Dazu sind zahlreiche Experimente entstanden, die die Auswirkungen von Bildsprache, insbesondere bei Bewegtbildmedien und ihre ethischen Implikationen untersuchen. Auffällige Ergebnisse des Untersuchungszeitraums Januar 2025 bis Februar 2026 waren unter anderem die abnehmende Content Moderation durch die KI-Konzerne. Dabei wurden sowohl chinesische Anbieter wie die Minimax Group mit ihrer generativen künstlichen Intelligenz Hailuo AI oder auch Kuaishou mit ihrer generativen KI KLING AI, als auch westliche Plattformen wie OpenAI mit Sora, Google mit Gemini und Microsoft mit Copilot untersucht.</p>
+    <p class="detail-project-desc">Für eine methodische Vergleichbarkeit wurden allen KI-Modellen die gleichen Prompts gegeben, um möglichst nah an das umstrittene Sprachbild der "Flüchtlingswelle" heran zu kommen. Die Ergebnisse sind hier in einem kurzen Video dargestellt.</p>
+  </div>
+</div>
+
+  </div>
+
+</div><!-- Ende detail-video -->
+
+<!-- GRAFIK DETAIL -->
+<div class="category-detail detail-grafik" id="detail-grafik">
+  <div class="detail-close">
+    <button onclick="closeDetail('grafik')" aria-label="Schließen">✕</button>
+  </div>
+  <div class="detail-header">
+    <span class="detail-label">Übersicht</span>
+    <h2 class="detail-title">Grafikdesign & Illustration</h2>
+    <div class="divider"></div>
+  </div>
+  <div class="detail-projects">
+
+<div class="detail-project" id="projekt-divifag">
+      <div class="detail-project-num">01 / Branding & Öffentlichkeitsarbeit</div>
+      <div class="detail-project-text-top">
+        <div class="detail-project-title">Logo & Corporate Design</div>
+        <div class="detail-project-cat">Forschungsprojekt DiViFaG · 2021–2023</div>
+      </div>
+      <div class="detail-project-img is-slideshow" id="slideshow-divifag">
+        <div class="slideshow-wrap">
+          <div class="slideshow-track" id="track-divifag">
+            <div class="slideshow-slide landscape"><img src="images/DiViFaG_Logo.webp" alt="Divifag Logo" /></div>
+            <div class="slideshow-slide landscape"><img src="images/Animation_Divifag_LogoIntro.gif" alt="Divifag Logo Animation" /></div>
+            <div class="slideshow-slide landscape"><img src="images/DiViFaG_Projektpartner.webp" alt="Divifag Projektpartner" /></div>
+            <div class="slideshow-slide landscape"><img src="images/DiViFaG_Glossar_Mediendidaktik.webp" alt="Illustration Mediendidaktik" /></div>
+            <div class="slideshow-slide portrait"><img src="images/DiViFaG_Einladung.webp" alt="Einladung Abschlusstagung" /></div>
+            <div class="slideshow-slide landscape"><img src="images/Divifag_Schwindel.webp" alt="Illustration Schwindel" /></div>
+            <div class="slideshow-slide portrait"><img src="images/DiViFaG_Wundversorgung.png" alt="Illustration Wundversorgung" /></div>
+            <div class="slideshow-slide portrait"><img src="images/DiViFaG_Poster_Design.webp" alt="Divifag Projektvorstellung Poster" /></div>
+            <div class="slideshow-slide quadratisch"><img src="images/DiViFaG_Fieber.webp" alt="Illustration Fieber" /></div>
+            <div class="slideshow-slide landscape"><img src="images/DiViFaG_Fotos_Videos.webp" alt="Illustration Fotos & Videos" /></div>
+            <div class="slideshow-slide landscape"><img src="images/Patientengespräch Illustration.webp" alt="Illustration Patientengespräch" /></div>
+          </div>
+          <button class="slideshow-btn prev" onclick="event.stopPropagation(); slidePrev('track-divifag')">‹</button>
+          <button class="slideshow-btn next" onclick="event.stopPropagation(); slideNext('track-divifag')">›</button>
+        </div>
+      </div>
+      <div class="detail-project-text-bottom">
+        <p class="detail-project-desc">DiViFaG - Digitale und virtuell unterstützte Fallarbeit in den Gesundheitsberufen</p>
+        <p class="detail-project-desc">Als wissenschaftliche Mitarbeiterin unterstützte ich das Forschungsprojekt im Bereich der Öffentlichkeitsarbeit und bei der Entwicklung und Gestaltung von Lehr- und Lernmaterialien für die Pflegeausbildung. Die Konzeption und Umsetzung des gesamten visuellen Auftritts lagen in meinem Verantwortungsbereich. Angefangen mit dem Logodesign bis zur Corporate Identity. Zu meinen Aufgaben gehörten die Gestaltung von Printmedien, wie Postern, Flyern und Visitenkarten, das Erstellen von vielfältigen Illustrationen sowie die Entwicklung digitaler Formate, darunter Erklärvideos und Präsentationsvorlagen. Ein Kurzvideo zum Thema Dehydration finden Sie unter diesem Link: Erklärvideo in Form eines Screenrecording erstellt, welches Sie unter diesem Link finden: <a href="https://av.tib.eu/media/63818" target="_blank">Erklärvideo Anzeichen einer Dehydration</a></p>
+        <p class="detail-project-desc">Ziel war es, komplexe Forschungsinhalte verständlich, ansprechend und zielgruppengerecht zu vermitteln. Weitere Informationen zum Forschungsprojekt finden sich auf der Projektwebsite: <a href="https://www.hsbi.de/inbvg/projekte/bildungsforschung/divifag" target="_blank">DiViFaG Projekthomepage</a></p>
+      </div>
+    </div>
+
+    <div class="detail-project reverse alt-bg" id="projekt-virdipa">
+      <div class="detail-project-num">02 / Öffentlichkeitsarbeit</div>
+      <div class="detail-project-text-top">
+        <div class="detail-project-title">Illustration & Grafikdesign</div>
+        <div class="detail-project-cat">Forschungsprojekt ViRDiPA · 2023–2024</div>
+      </div>
+      <div class="detail-project-img is-slideshow" id="slideshow-virdipa">
+        <div class="slideshow-wrap">
+          <div class="slideshow-track" id="track-virdipa">
+            <div class="slideshow-slide portrait"><img src="images/ViRDiPA_Willkommen.webp" alt="Willkommenposter" /></div>
+            <div class="slideshow-slide landscape"><img src="images/Animation_Virdipa_LogoIntro.gif" alt="ViRDiPA Logo Animation" /></div>
+            <div class="slideshow-slide landscape"><img src="images/ViRDiPA Illustration weiß.webp" alt="Illustration VR Übung" /></div>
+            <div class="slideshow-slide quadratisch"><img src="images/ViRDiPA_Verbundpartner.webp" alt="ViRDiPA Projektpartner" /></div>
+            <div class="slideshow-slide landscape"><img src="images/VR Laptop Illustration.webp" alt="VR & Laptop Illustration" /></div>
+            <div class="slideshow-slide quadratisch"><img src="images/ViRDiPA_Poster_2.webp" alt="ViRDiPA Poster" /></div>
+            <div class="slideshow-slide landscape"><img src="images/ViRDiPA_Frau_Laptop_VR.webp" alt="Illustration VR-Technik" /></div>
+            <div class="slideshow-slide landscape"><img src="images/ViRDiPA_Einladung.webp" alt="Einladung" /></div>
+            <div class="slideshow-slide quadratisch"><img src="images/ViRDiPA_Wunderversorgung.webp" alt="Illustration Wunderversorgung" /></div>
+            <div class="slideshow-slide landscape"><img src="images/ViRDiPA_Frau_VR Illustration.webp" alt="Illustration VR-Technik" /></div>
+          </div>
+          <button class="slideshow-btn prev" onclick="event.stopPropagation(); slidePrev('track-virdipa')">‹</button>
+          <button class="slideshow-btn next" onclick="event.stopPropagation(); slideNext('track-virdipa')">›</button>
+        </div>
+      </div>
+      <div class="detail-project-text-bottom">
+        <p class="detail-project-desc">ViRDiPA - Virtual Reality basierte Digital Reusable Learning Objects in der Pflegeausbildung</p>
+        <p class="detail-project-desc">Im Anschluss an das Forschungsprojekt DiViFaG war ich in einem weiteren Forschungsprojekt gestalterisch tätig. Ein bereits bestehendes Logo integrierte ich dabei als zentrales grafisches Element in verschiedene Print- und Onlinemedien und entwickelte dessen Anwendung visuell weiter.</p>
+        <p class="detail-project-desc">Mein Schwerpunkt lag auch in diesem Projekt in der Öffentlichkeitsarbeit im Bereich Grafikdesign und Illustration, insbesondere in der Gestaltung konsistenter visueller Kommunikationsmittel über unterschiedliche Formate hinweg. Drüber hinaus wurde für die Lernplattform Ilias ein Erklärvideo in Form eines Screenrecording erstellt, welches Sie unter diesem Link finden: <a href="https://www.hsbi.de/elearning/ilias.php?baseClass=ilrepositorygui&ref_id=1107300" target="_blank">Erklärvideo auf Ilias</a></p>
+        <p class="detail-project-desc">Weitere Informationen zum Forschungsprojekt: <a href="https://www.hsbi.de/inbvg/projekte/bildungsforschung/virtual-reality-basierte-digital-reusable-learning-objects-in-der-pflegeausbildung" target="_blank">ViRDiPA Projektseite</a></p>
+      </div>
+    </div>
+
+        <div class="detail-project reverse" id="projekt-grafik-2">
+      <div class="detail-project-num">03 / Auftragsarbeit</div>
+      <div class="detail-project-text-top">
+        <div class="detail-project-title">Logodesign Dackelzucht</div>
+        <div class="detail-project-cat">Logodesign & Printvorlagen · 2026</div>
+      </div>
+      <div class="detail-project-img is-slideshow" id="slideshow-grafik-2">
+        <div class="slideshow-wrap">
+          <div class="slideshow-track" id="track-grafik-2">
+            <div class="slideshow-slide landscape"><img src="images/DackelLogo.webp" alt="Dackel Logo" /></div>
+            <div class="slideshow-slide portrait"><img src="images/Dackellogo Impfpasshülle 1.webp" alt="Dackellogo Impfpasshüllen" /></div>
+            <div class="slideshow-slide landscape"><img src="images/DackelLogo SchwarzWeiß Version.webp" alt="Dackel Logo Schwarz Weiß" /></div>
+            <div class="slideshow-slide portrait"><img src="images/Dackellogo Impfpasshüllen 1.webp" alt="Dackellogo Impfpasshüllen" /></div>
+            <div class="slideshow-slide landscape"><img src="images/DackelLogo ohne Schrift_zweifarbiger Hintergrund.webp" alt="Dackel Logo" /></div>
+            <div class="slideshow-slide landscape"><img src="images/Dackel_Visitenkarte_Rückseite.png" alt="Visitenkarte Rückseite" /></div>
+            <div class="slideshow-slide landscape"><img src="images/Dackellogo_Linien.webp" alt="Dackel Logo Linien" /></div>
+          </div>
+          <button class="slideshow-btn prev" onclick="event.stopPropagation(); slidePrev('track-grafik-2')">‹</button>
+          <button class="slideshow-btn next" onclick="event.stopPropagation(); slideNext('track-grafik-2')">›</button>
+        </div>
+      </div>
+      <div class="detail-project-text-bottom">
+        <p class="detail-project-desc">Das Logodesign für die professionelle Dackelzucht war eine Auftragsarbeit und wurde in enger Abstimmung mit dem Kunden entwickelt. Inbegriffen waren verschiedene Entwürfe, Farbvariationen und Layouts. Das finale Logo basiert auf dem einmaligen, kurvenreichen Moselverlauf am Standort der Dackelzucht. Da die Kurzhaardackel vielfach für Schönheit und Jagd ausgezeichnet und die rote und schwarze Farbe des Fells ein Symbol für die besonders hochklassige Zucht ist, sind diese als Hauptmerkmale in den Entwurf eingeflossen. Das Logo wurde in verschiedenen Ausführungen für Print- und Onlinemedien aufbereitet, wie zum Beispiel für die Impfpasshüllen des ersten Welpenwurfs.</p>
+      </div>
+    </div>
+
+    <div class="detail-project alt-bg" id="projekt-grenzenlos">
+      <div class="detail-project-num">04 / Print- & Onlinemedien</div>
+      <div class="detail-project-text-top">
+        <div class="detail-project-title">Weitere Projekte</div>
+        <div class="detail-project-cat">Grafikdesign & Illustration · 2021–heute</div>
+      </div>
+      <div class="detail-project-img is-slideshow" id="slideshow-grenzenlos">
+        <div class="slideshow-wrap">
+          <div class="slideshow-track" id="track-grenzenlos">
+            <div class="slideshow-slide portrait"><img src="images/Backprint Croatia Karte.webp" alt="Kroatien Printdesign" /></div>
+            <div class="slideshow-slide landscape"><img src="images/Scotland Front.webp" alt="Schottland Printdesign" /></div>
+            <div class="slideshow-slide portrait"><img src="images/Grenzenlos - FINAL - A3 - überarbeitet.webp" alt="Grenzenlos Plakat" /></div>
+            <div class="slideshow-slide landscape"><img src="images/LebensLand Logo final.webp" alt="LebensLand Logo" /></div>
+          </div>
+          <button class="slideshow-btn prev" onclick="event.stopPropagation(); slidePrev('track-grenzenlos')">‹</button>
+          <button class="slideshow-btn next" onclick="event.stopPropagation(); slideNext('track-grenzenlos')">›</button>
+        </div>
+      </div>
+      <div class="detail-project-text-bottom">
+        <p class="detail-project-desc">Hier finden Sie eine Sammlung von Auftragsarbeiten im Bereich Grafikdesign für Eventplakate oder Flyer. Außerdem zeige ich einige private Illustrationen und Animationen.</p>
+      </div>
+    </div>
+
+  </div>
+</div><!-- Ende detail-grafik -->
+
+<!-- PRODUKT DETAIL -->
+<div class="category-detail detail-produkt" id="detail-produkt">
+  <div class="detail-close">
+    <button onclick="closeDetail('produkt')" aria-label="Schließen">✕</button>
+  </div>
+  <div class="detail-header">
+    <span class="detail-label">Übersicht</span>
+    <h2 class="detail-title">Produktdesign</h2>
+    <div class="divider"></div>
+  </div>
+  <div class="detail-projects">
+
+    <div class="detail-project" id="projekt-vanausbau">
+      <div class="detail-project-num">01 / Fahrzeugausbau</div>
+      <div class="detail-project-text-top">
+        <div class="detail-project-title">Sprinter Vanausbau</div>
+        <div class="detail-project-cat">Produktdesign · 2019 / 2020</div>
+      </div>
+      <div class="detail-project-img is-slideshow" id="slideshow-vanausbau">
+        <div class="slideshow-wrap">
+          <div class="slideshow-track" id="track-vanausbau">
+            <div class="slideshow-slide landscape"><img src="images/Sprinter_Seite&Innen.webp" alt="Vanausbau" /></div>
+            <div class="slideshow-slide landscape"><img src="images/Sprinter_Küche.webp" alt="Detail" /></div>
+            <div class="slideshow-slide landscape"><img src="images/Sprinter_Küche_ausgezogen.webp" alt="Detail" /></div>
+            <div class="slideshow-slide landscape"><img src="images/Sprinter_Innen.webp" alt="Detail" /></div>
+            <div class="slideshow-slide landscape"><img src="images/Sprinter_Seite.webp" alt="Detail" /></div>
+            <div class="slideshow-slide landscape"><img src="images/Sprinter_hinten_Batterie.webp" alt="Detail" /></div>
+            <div class="slideshow-slide landscape"><img src="images/Sprinter_hinten_Stauraum.webp" alt="Detail" /></div>
+            <div class="slideshow-slide landscape"><img src="images/Sprinter_hinten_Sitzecke.webp" alt="Detail" /></div>
+            <div class="slideshow-slide landscape"><img src="images/Sprinter_hinten_Dusche.webp" alt="Detail" /></div>
+            <div class="slideshow-slide landscape"><img src="images/Sprinter_Innen_nah.webp" alt="Detail" /></div>
+            <div class="slideshow-slide landscape"><img src="images/Sprinter_Innen_Toilette.webp" alt="Detail" /></div>
+          </div>
+          <button class="slideshow-btn prev" onclick="event.stopPropagation(); slidePrev('track-vanausbau')">‹</button>
+          <button class="slideshow-btn next" onclick="event.stopPropagation(); slideNext('track-vanausbau')">›</button>
+        </div>
+      </div>
+      <div class="detail-project-text-bottom">
+        <p class="detail-project-desc">MODULARES INNENRAUM KONZEPT FÜR EINEN MERCEDES SPRINTER</p>
+        <p class="detail-project-desc">Dieses Innenraumkonzept für einen Mercedes Sprinter wurde für die Firma VanMe Campervans in Hamburg entworfen. Die charakteristisch abgerundeten Ecken, das gestalterische Wiedererkennungsmerkmal der Marke, wurden bewusst in das Sprinter-Konzept übertragen. Auch die Farbgestaltung erfolgte in enger Abstimmung mit den Auftraggeber*innen. Das gesamte Raum- und Möbelkonzept sowie die Entwicklung der multifunktionalen Lösungen wurden von mir entworfen und als realistisches 3D Modell umgesetzt.</p>
+        <p class="detail-project-desc">Im Zentrum des Konzepts stehen flexible Möbelsysteme mit mehreren Nutzungsszenarien. Beispielsweise kann der hohe Schrank entweder als klassischer Stauraum mit Regalböden genutzt oder bei Bedarf in eine ausziehbare Toilettenkabine mit geruchsneutraler Komposttoilette umgewandelt werden. Der hintere Fahrzeugbereich lässt sich wahlweise als Schlafplatz oder als Sitzlandschaft mit höhenverstellbarem Tisch einrichten. Die Küchenzeile ist verschiebbar und kann unter das Bett geschoben werden, um im vorderen Bereich zusätzliche Bewegungsfreiheit zu schaffen.
+Das Konzept wurde im Rahmen der oohh! Freizeitmesse 2020 in Hamburg präsentiert.</p>
+      </div>
+    </div>
+
+    <div class="detail-project reverse alt-bg" id="projekt-bachelorarbeit">
+      <div class="detail-project-num">02 / Bachelorarbeit</div>
+      <div class="detail-project-text-top">
+        <div class="detail-project-title">Modulares Campingbett</div>
+        <div class="detail-project-cat">Produktdesign Abschlussarbeit · 2021</div>
+      </div>
+      <div class="detail-project-img is-slideshow" id="slideshow-bachelorarbeit">
+        <div class="slideshow-wrap">
+          <div class="slideshow-track" id="track-bachelorarbeit">
+            <div class="slideshow-slide landscape"><img src="images/BA Explosion weiß.webp" alt="Modulares Campingkonzept" /></div>
+            <div class="slideshow-slide landscape"><img src="images/BA_Aufgebaut.webp" alt="Gesamtbild" /></div>
+            <div class="slideshow-slide landscape"><img src="images/BA_Aufgebaut_front.webp" alt="Frontansicht" /></div>
+            <div class="slideshow-slide landscape"><img src="images/BA_Aufgebaut_nah.webp" alt="Nahaufnahme" /></div>
+            <div class="slideshow-slide landscape"><img src="images/BA_Aufbau_gif.gif" alt="Aufbauvideo" /></div>
+            <div class="slideshow-slide landscape"><img src="images/BA_Kiste_front.webp" alt="Nahaufnahme Kiste" /></div>
+            <div class="slideshow-slide landscape"><img src="images/BA_Kiste_top.webp" alt="Topansicht Kiste" /></div>
+            <div class="slideshow-slide landscape"><img src="images/BA_Stützenaufbau_gif.gif" alt="Aufbau Stützen" /></div>
+            <div class="slideshow-slide landscape"><img src="images/BA_flexible_Fläche.webp" alt="Stoffliegefläche" /></div>
+            <div class="slideshow-slide landscape"><img src="images/BA_Füße.webp" alt="Fußmechanismus" /></div>
+            <div class="slideshow-slide landscape"><img src="images/BA_Gesamtbild.webp" alt="Gesamtbild" /></div>
+          </div>
+          <button class="slideshow-btn prev" onclick="event.stopPropagation(); slidePrev('track-bachelorarbeit')">‹</button>
+          <button class="slideshow-btn next" onclick="event.stopPropagation(); slideNext('track-bachelorarbeit')">›</button>
+        </div>
+      </div>
+      <div class="detail-project-text-bottom">
+        <p class="detail-project-desc">KOMPAKTES CAMPINGBETT FÜR DEN KOFFERRAUM VON KLEINWAGEN</p>
+        <p class="detail-project-desc">In meiner Bachelorarbeit im Produktdesign an der Hochschule Hannover habe ich mich mit dem Thema Campervans auseinandergesetzt. Ausgangspunkt war die deutliche Zunahme der Neuzulassungen von Kastenwagen im Jahr 2020, die im Vergleich zum Vorjahr nahezu verdoppelt wurden.  Vor diesem Hintergrund stellte sich die Frage, wie sich temporäre Schlaf- und Aufenthaltslösungen direkt im Kleinwagen realisieren lassen, ohne auf ein zusätzliches Fahrzeug angewiesen zu sein.</p>
+        <p class="detail-project-desc">Das Ergebnis ist ein kompakt integriertes, ausklappbares Bettmodul, das nach dem Prinzip eines Feldbetts funktioniert und sich mit einem handelsüblichen Heckzelt kombinieren lässt. Die textile Liegefläche ist in eine Kofferraumbox integriert, die gleichzeitig als Stauraum für alle Systemkomponenten dient. Ausklappbare Holzstützen und steckbare Stangenelemente bilden eine stabile vordere Konstruktion und ermöglichen einen schnellen, werkzeuglosen Aufbau.</p>
+        <p class="detail-project-desc">Alle Elemente sind so konzipiert, dass sie vollständig in der Kofferraumbox verstaut werden können und dabei ausreichend Platz für persönliche Campingausrüstung bleibt. Dadurch entsteht ein System, das Mobilität, Alltagstauglichkeit und temporären Wohnkomfort im Fahrzeug miteinander verbindet.</p>
+      </div>
+    </div>
+
+    <div class="detail-project" id="projekt-produktdesign-3">
+      <div class="detail-project-num">03 / Produktdesign</div>
+      <div class="detail-project-text-top">
+        <div class="detail-project-title">Concept Convenience Store</div>
+        <div class="detail-project-cat">Studienprojekt · 2019</div>
+      </div>
+      <div class="detail-project-img is-slideshow" id="slideshow-produktdesign-3">
+        <div class="slideshow-wrap">
+          <div class="slideshow-track" id="track-produktdesign-3">
+            <div class="slideshow-slide landscape"><img src="images/ToGoLaden_front.webp" alt="ToGo Laden" /></div>
+            <div class="slideshow-slide landscape"><img src="images/ToGo_Oben.webp" alt="Laden Draufsicht" /></div>
+            <div class="slideshow-slide landscape"><img src="images/ToGo_Font&Seite.webp" alt="Laden Seitenansicht" /></div>
+            <div class="slideshow-slide landscape"><img src="images/ToGo_Innen.webp" alt="Ladeninneres" /></div>
+            <div class="slideshow-slide landscape"><img src="images/ToGo_Draufsicht.webp" alt="Ladeninneres" /></div>
+            <div class="slideshow-slide landscape"><img src="images/ToGo_Front.webp" alt="Laden Frontansicht" /></div>
+            <div class="slideshow-slide landscape"><img src="images/ToGo_Modularität.webp" alt="Laden Frontansicht" /></div>
+            <div class="slideshow-slide landscape"><img src="images/ToGo_Ladeninneres.webp" alt="Laden Innenansicht" /></div>
+            <div class="slideshow-slide landscape"><img src="images/ToGo_Front&Unten.webp" alt="Ladeninneres" /></div>
+            <div class="slideshow-slide landscape"><img src="images/ToGo_Parkplatz.webp" alt="Laden Frontansicht" /></div>
+          </div>
+          <button class="slideshow-btn prev" onclick="event.stopPropagation(); slidePrev('track-produktdesign-3')">‹</button>
+          <button class="slideshow-btn next" onclick="event.stopPropagation(); slideNext('track-produktdesign-3')">›</button>
+        </div>
+      </div>
+      <div class="detail-project-text-bottom">
+        <p class="detail-project-desc">Im Fokus der Arbeit steht die Verringerung von Nahrungsabfällen durch ein nachhaltiges Konzept zur Weiterverarbeitung von Lebensmitteln.</p>
+        <p class="detail-project-desc">Täglich werfen Supermärkte Tonnen an Lebensmitteln in den Abfall, weil das Mindesthaltbarkeitsdatum fast oder ganz abgelaufen ist. Andere Produkte werden aussortiert weil sie mit der Zeit weniger ansehnlich werden, was insbesondere bei Gemüse	und Obst häufig vorkommt. Viele dieser Produkte sind über das Datum hinaus noch unbedenklich genießbar, dürfen aber nicht weiter zum Verkauf angeboten werden. Der Concept Store will diese Lücke schließen und bietet die Möglichkeit eben diese Nahrungsmittel neu aufzubereiten. Gerade durch Kochen kann die Mindest- haltbarkeit verlängert werden und die Gerichte dürfen wieder verkauft werden. So wird neben der Vermeidung von Abfall, zusätzlich dem Supermarkt die Chance geboten noch weiteren Gewinn zu erzielen.</p>
+        <p class="detail-project-desc">Einige dieser Lebensmittel dürfen auf- grund von gesetzlichen Richtlinien nicht an Hilfsorganisationen, wie beispielsweise die Tafel, gespendet werden. Darunter fallen insbesondere Milchprodukte und Fleisch- waren, da hier die Kühlkette nicht unterbrochen werden darf.</p>
+        <p class="detail-project-desc">Der Laden ist so gestaltet, dass er an die genormten Maße eines Parkplatzes angepasst ist und somit vor jedem Supermarkt aufgebaut werden kann. Das Grundgerüst besteht aus einem quadratischen, schwarzen Metallrahmen in der Größe eines Parkplatzes. Für eine natürliche Beleuchtung und eine einladende Atmosphäre, sind nach Vorne und zu den Seiten große Glasfronten in den Metallrahmen eingefasst. Für genügend Ladenfläche braucht es minimal zwei Module, welche flexibel, durch weitere Module, erweiterbar sind. Über den gesamten Laden verläuft ein asymmetrisches Gerüst aus geflammtem, blauem Stahl, welches für hochwertiges und modernes Design steht.</p>
+        <p class="detail-project-desc">Der Laden bietet Platz für eine Verkaufsfläche mit Kasse und für eine Showküche. Dort werden die Lebenmittel vor Ort von einem Koch zu neuen Gerichten verarbeitet und der Kunde ist eingeladen, den Prozess zu beobachten.</p>
+      </div>
+    </div>
+
+    <div class="detail-project reverse alt-bg" id="projekt-produktdesign-4">
+      <div class="detail-project-num">04 / Produktdesign</div>
+      <div class="detail-project-text-top">
+        <div class="detail-project-title">Weitere Arbeiten</div>
+        <div class="detail-project-cat">Studienprojekte · 2018-2021</div>
+      </div>
+      <div class="detail-project-img is-slideshow" id="slideshow-produktdesign-4">
+        <div class="slideshow-wrap">
+          <div class="slideshow-track" id="track-produktdesign-4">
+            <div class="slideshow-slide landscape"><img src="images/Drohne_nah.webp" alt="Drohne" /></div>
+            <div class="slideshow-slide landscape"><img src="images/Kaffeekanne_hintereinander.webp" alt="Kaffeekanne und Milchkännchen" /></div>
+            <div class="slideshow-slide landscape"><img src="images/Babyphone_beide.webp" alt="Babyphone Sender und Empfänger" /></div>
+            <div class="slideshow-slide landscape"><img src="images/Drohne_oben.webp" alt="Drohne" /></div>
+            <div class="slideshow-slide quadratisch"><img src="images/Kaffeekanne_voreinander.webp" alt="Kaffeekanne und Milchkännchen" /></div>
+            <div class="slideshow-slide landscape"><img src="images/Babyphone_beide_oben.webp" alt="Babyphone Sender und Empfänger" /></div>
+            <div class="slideshow-slide landscape"><img src="images/1368798_Freese_Drohne_3D_Modeling_Aufgabe_2.webp" alt="Drohne" /></div>
+            <div class="slideshow-slide landscape"><img src="images/Drohne_hinten_nah.webp" alt="Drohne" /></div>
+            <div class="slideshow-slide landscape"><img src="images/Kaffeekanne_hintereinander2.webp" alt="Kaffeekanne und Milchkännchen" /></div>
+            <div class="slideshow-slide quadratisch"><img src="images/Kaffeekanne_voreinander2.webp" alt="Kaffeekanne und Milchkännchen" /></div>
+            <div class="slideshow-slide landscape"><img src="images/Babyphone_Empfänger.webp" alt="Babyphone Empfänger" /></div>
+            <div class="slideshow-slide landscape"><img src="images/Babyphone_Sender.webp" alt="Babyphone Sender" /></div>
+          </div>
+          <button class="slideshow-btn prev" onclick="event.stopPropagation(); slidePrev('track-produktdesign-4')">‹</button>
+          <button class="slideshow-btn next" onclick="event.stopPropagation(); slideNext('track-produktdesign-4')">›</button>
+        </div>
+      </div>
+      <div class="detail-project-text-bottom">
+        <p class="detail-project-desc">Hier finden Sie eine kleine Auswahl an Produktdesignarbeiten aus meiner Studienzeit. Es sei zu beachten, dass dies nicht alle erstellten Arbeiten umfasst und die Möglichkeiten realisitische Renderings zu erstellen, beispielsweise mit KI, sich stark verändert und vereinfacht haben. Nichtsdestotrotz zeigen diese Projekte meine Gestaltungssprache und geben einen guten Einblick in meine Arbeitsansätze.</p>
+      </div>
+    </div>
+
+  </div>
+</div><!-- Ende detail-produkt -->
+</div>
+
 <!-- FOOTER -->
 <footer>
-  <span class="footer-name">Isa</span>
+  <span class="footer-name">Isa Freese</span>
   <span class="footer-copy">© 2026 — Alle Rechte vorbehalten</span>
 </footer>
 
 <script>
+
   // ── Theme Toggle ──
   const btn = document.getElementById('theme-btn');
   const label = document.getElementById('theme-label');
   const icon = btn.querySelector('.theme-icon');
-  let dark = true;
+  let dark = false;
   btn.addEventListener('click', () => {
     dark = !dark;
     document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
@@ -1025,34 +1432,17 @@
   hamburger.addEventListener('click', () => mobileMenu.classList.toggle('open'));
   function closeMobile() { mobileMenu.classList.remove('open'); }
 
-  // ── Hero background upload ──
-  const heroInput = document.getElementById('hero-file-input');
-  const heroBgImg = document.getElementById('hero-bg-img');
-  const heroBgText = document.querySelector('.hero-bg-text');
-  const heroUploadZone = document.querySelector('.hero-upload-zone');
-  heroInput.addEventListener('change', e => {
-    const file = e.target.files[0];
-    if (!file) return;
-    const url = URL.createObjectURL(file);
-    heroBgImg.src = url;
-    heroBgImg.style.display = 'block';
-    heroBgText.style.display = 'none';
-    heroUploadZone.style.display = 'none';
-  });
-
   // ── Logo upload ──
   const logoBtn = document.getElementById('logo-btn');
   const logoImg = document.getElementById('logo-img');
   logoBtn.addEventListener('click', () => {
     const input = document.createElement('input');
-    input.type = 'file';
-    input.accept = 'image/*';
+    input.type = 'file'; input.accept = 'image/*';
     input.onchange = e => {
       const file = e.target.files[0];
       if (!file) return;
       logoImg.src = URL.createObjectURL(file);
       logoImg.style.display = 'block';
-      logoBtn.querySelector('span:not(.logo-upload-hint)') && (logoBtn.firstChild.textContent = '');
     };
     input.click();
   });
@@ -1069,7 +1459,29 @@
   }, { threshold: 0.1 });
   reveals.forEach(el => observer.observe(el));
 
-  // ── Skill bars animate on scroll ──
+  // ── Projektkarten versetzt einblenden ──
+const cards = document.querySelectorAll('.project-card');
+  const cardObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const visibleCards = Array.from(entries).filter(e => e.isIntersecting);
+        const index = visibleCards.indexOf(entry);
+        setTimeout(() => {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }, index * 100);
+        cardObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  cards.forEach(card => {
+    card.style.opacity = '0';
+    card.style.transform = 'translateY(40px)';
+    card.style.transition = 'opacity 0.8s ease, transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94)';
+    cardObserver.observe(card);
+  });
+
+  // ── Skill bars ──
   const skillBars = document.querySelectorAll('.skill-bar-fill');
   const skillObserver = new IntersectionObserver(entries => {
     entries.forEach(entry => {
@@ -1080,6 +1492,131 @@
     });
   }, { threshold: 0.3 });
   skillBars.forEach(bar => skillObserver.observe(bar));
+
+  // ── Multi-Bild Slideshow ──
+  var slideshowCurrents = {};
+
+function slideNext(trackId) {
+    var track = document.getElementById(trackId);
+    if (!track) return;
+    var slides = track.querySelectorAll('.slideshow-slide');
+    if (!slideshowCurrents[trackId]) slideshowCurrents[trackId] = 0;
+    var current = slideshowCurrents[trackId];
+    var nextIndex = current + 1;
+    if (nextIndex >= slides.length) {
+      nextIndex = 0;
+    }
+    var offset = 0;
+    for (var i = 0; i < nextIndex; i++) offset += slides[i].offsetWidth + 4;
+    var wrapWidth = track.parentElement.offsetWidth;
+    var totalWidth = 0;
+    for (var i = 0; i < slides.length; i++) totalWidth += slides[i].offsetWidth + 4;
+    if (offset + wrapWidth > totalWidth) {
+      offset = totalWidth - wrapWidth;
+    }
+    slideshowCurrents[trackId] = nextIndex;
+    track.style.transform = 'translateX(-' + offset + 'px)';
+  }
+
+  function slidePrev(trackId) {
+    var track = document.getElementById(trackId);
+    if (!track) return;
+    var slides = track.querySelectorAll('.slideshow-slide');
+    if (!slideshowCurrents[trackId]) slideshowCurrents[trackId] = 0;
+    var current = slideshowCurrents[trackId];
+    current = (current - 1 + slides.length) % slides.length;
+    slideshowCurrents[trackId] = current;
+    var offset = 0;
+    for (var i = 0; i < current; i++) offset += slides[i].offsetWidth + 4;
+    track.style.transform = 'translateX(-' + offset + 'px)';
+  }
+
+function initSlideshow(containerId, intervalMs) {
+    var trackId = 'track-' + containerId.replace('slideshow-', '');
+    
+    function scheduleNext() {
+      var track = document.getElementById(trackId);
+      if (!track) return;
+      var slides = track.querySelectorAll('.slideshow-slide');
+      var current = slideshowCurrents[trackId] || 0;
+      var wrapWidth = track.parentElement.offsetWidth;
+      var totalWidth = 0;
+      for (var i = 0; i < slides.length; i++) totalWidth += slides[i].offsetWidth + 4;
+      var currentOffset = 0;
+      for (var i = 0; i < current; i++) currentOffset += slides[i].offsetWidth + 4;
+      var isAtEnd = (currentOffset + wrapWidth >= totalWidth - 10);
+      var delay = isAtEnd ? 1500 : intervalMs;
+      setTimeout(function() {
+        slideNext(trackId);
+        scheduleNext();
+      }, delay);
+    }
+    scheduleNext();
+  }
+
+  // ── Category Detail Overlay ──
+  const categoryColors = {
+    video: '#2e5f5f',
+    grafik: '#c46a3f',
+    produkt: '#8a4250'
+  };
+
+  function openDetail(name) {
+    document.getElementById('detail-' + name).classList.add('open');
+    document.body.style.overflow = 'hidden';
+    document.querySelector('footer').style.background = categoryColors[name];
+    const projects = document.querySelectorAll('#detail-' + name + ' .detail-project');
+    projects.forEach((p, i) => {
+      setTimeout(() => p.classList.add('visible'), 150 + i * 120);
+    });
+if (name === 'grafik') {
+      setTimeout(() => {
+        initSlideshow('slideshow-divifag', 6000);
+        initSlideshow('slideshow-virdipa', 6000);
+        initSlideshow('slideshow-grenzenlos', 6000);
+        initSlideshow('slideshow-grafik-2', 6000);
+      }, 800);
+    }
+    if (name === 'produkt') {
+      setTimeout(() => {
+        initSlideshow('slideshow-vanausbau', 6000);
+        initSlideshow('slideshow-bachelorarbeit', 6000);
+        initSlideshow('slideshow-produktdesign-3', 6000);
+        initSlideshow('slideshow-produktdesign-4', 6000);
+      }, 800);
+    }
+  }
+
+  function closeDetail(name) {
+    document.getElementById('detail-' + name).classList.remove('open');
+    document.body.style.overflow = '';
+    document.querySelector('footer').style.background = '';
+  }
+
+  function openDetailAndScroll(categoryName, projektId) {
+    openDetail(categoryName);
+    setTimeout(() => {
+      const el = document.getElementById(projektId);
+      if (el) {
+        const overlay = document.querySelector('.category-detail.open');
+        const offset = el.offsetTop - 100;
+        overlay.scrollTo({ top: offset, behavior: 'smooth' });
+      }
+    }, 700);
+  }
+
+  // Klicks auf Projektkarten sollen NICHT das Overlay öffnen
+  document.querySelectorAll('.portfolio-category .project-card').forEach(card => {
+    card.addEventListener('click', e => e.stopPropagation());
+  });
+
+  // ── Vimeo Video ──
+  function openVideo(vimeoId, hash, containerId) {
+    const hashParam = hash ? `&h=${hash}` : '';
+    const container = document.getElementById(containerId);
+    container.innerHTML = `<iframe src="https://player.vimeo.com/video/${vimeoId}?autoplay=1${hashParam}&title=0&byline=0&portrait=0" width="100%" height="100%" frameborder="0" allow="autoplay; fullscreen" allowfullscreen style="border-radius:4px;"></iframe>`;
+  }
+
 </script>
 </body>
 </html>

@@ -1,0 +1,4 @@
+baseURL = "https://isafrse.github.io/"
+languageCode = "de-de"
+title = "Isa Müller"
+theme = "toha"
