@@ -156,10 +156,6 @@
   height: 100%; width: auto; object-fit: cover;
   min-width: 180px; max-width: 480px; flex-shrink: 0; display: block;
 }
-.row-left  { animation: marqueeLeft  35s linear infinite; }
-.row-right { animation: marqueeRight 35s linear infinite; }
-@keyframes marqueeLeft  { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-@keyframes marqueeRight { from { transform: translateX(-50%); } to { transform: translateX(0); } }
 
 /* Titel liegt auf der Unterkante der Galerie */
 .hero-title-block {
@@ -636,6 +632,7 @@
   order: 1;
   min-width: 0;
   height: 500px;
+  position: relative;
 }
 .detail-project.reverse .detail-project-img-stack { order: 2; }
 .detail-project.reverse .detail-project-img-main  { order: 1; }
@@ -651,6 +648,7 @@
   overflow: hidden;
   min-width: 0;
   aspect-ratio: 16/9;
+  position: relative;
 }
 .detail-project-img-stack img,
 .detail-project-img-stack video,
@@ -823,6 +821,7 @@
   height: 100%;
   border-radius: 4px;
   overflow: hidden;
+  position: relative;
 }
 .slideshow-slide.portrait { width: 280px; }
 .slideshow-slide.landscape { width: 600px; }
@@ -871,6 +870,27 @@
 .detail-project-desc a:hover {
   color: #ffffff;
 }
+/* ── Wasserzeichen ── */
+.card-img-wrap::after,
+.about-img-wrap::after,
+.detail-project-img-main::after,
+.detail-project-img-stack > div::after,
+.slideshow-slide::after,
+.category-tile::after {
+  content: 'ISA FREESE';
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: rgba(255,255,255,0.55);
+  text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+  pointer-events: none;
+  z-index: 5;
+  user-select: none;
+  
+}
   </style>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -918,41 +938,45 @@
   <div class="hero-rows">
     <div class="hero-row-wrap">
       <div class="hero-row row-left">
-        <img src="images/BA_Exposion.webp" alt="" />
-        <img src="images/LichtInstallation_nah_pink.webp" alt="" />
-        <img src="images/Illustration_Virdipa_2.webp" alt="" />
-        <img src="images/MA-Ausstellung_2.webp" alt="" />
-        <img src="images/DiViFaG_Projektpartner.webp" alt="" />
-        <img src="images/LichtInstallation_fern_bunt.webp" alt="" />
-        <img src="images/DackelLogo ohne Schrift_zweifarbiger Hintergrund.webp" alt="" />
-        <img src="images/MA-Ausstellung_1.webp" alt="" />
-        <img src="images/BA_Exposion.webp" alt="" />
-        <img src="images/LichtInstallation_nah_pink.webp" alt="" />
-        <img src="images/Illustration_Virdipa_2.webp" alt="" />
-        <img src="images/MA-Ausstellung_2.webp" alt="" />
-        <img src="images/BA_Aufgebaut.webp" alt="" />
-        <img src="images/MA-Ausstellung_1.webp" alt="" />
-      </div>
+  <img src="images/BA_Exposion.webp" alt="" />
+  <img src="images/LichtInstallation_nah_pink.webp" alt="" />
+  <img src="images/Illustration_Virdipa_2.webp" alt="" />
+  <img src="images/MA-Ausstellung_2.webp" alt="" />
+  <img src="images/DiViFaG_Projektpartner.webp" alt="" />
+  <img src="images/LichtInstallation_fern_bunt.webp" alt="" />
+  <img src="images/DackelLogo ohne Schrift_zweifarbiger Hintergrund.webp" alt="" />
+  <img src="images/MA-Ausstellung_1.webp" alt="" />
+  <!-- Duplikate – exakt gleich wie oben -->
+  <img src="images/BA_Exposion.webp" alt="" />
+  <img src="images/LichtInstallation_nah_pink.webp" alt="" />
+  <img src="images/Illustration_Virdipa_2.webp" alt="" />
+  <img src="images/MA-Ausstellung_2.webp" alt="" />
+  <img src="images/DiViFaG_Projektpartner.webp" alt="" />
+  <img src="images/LichtInstallation_fern_bunt.webp" alt="" />
+  <img src="images/DackelLogo ohne Schrift_zweifarbiger Hintergrund.webp" alt="" />
+  <img src="images/MA-Ausstellung_1.webp" alt="" />
+</div>
     </div>
     <div class="hero-row-wrap">
       <div class="hero-row row-right">
-        <img src="images/MA-Ausstellung_4.webp" alt="" />
-        <img src="images/LichtInstallation_nah_bunt.webp" alt="" />
-        <img src="images/Videoessay_2.webp" alt="" />
-        <img src="images/Grenzenlos-Erde-waagerecht.webp" alt="" />
-        <img src="images/Illustration_Virdipa_1.webp" alt="" />
-        <img src="images/Sprinter_Seite.webp" alt="" />
-        <img src="images/LichtInstallation_fern_blau.webp" alt="" />
-        <img src="images/ToGo_Rendering2_bearbeitet.webp" alt="" />
-        <img src="images/MA-Ausstellung_4.webp" alt="" />
-        <img src="images/LichtInstallation_nah_bunt.webp" alt="" />
-        <img src="images/Videoessay_1.webp" alt="" />
-        <img src="images/Grenzenlos-Erde-waagerecht.webp" alt="" />
-        <img src="images/Illustration_Virdipa_1.webp" alt="" />
-        <img src="images/Sprinter_Seite.webp" alt="" />
-        <img src="images/LichtInstallation_fern_blau.webp" alt="" />
-        <img src="images/ToGo_Rendering2_bearbeitet.webp" alt="" />
-      </div>
+  <img src="images/MA-Ausstellung_4.webp" alt="" />
+  <img src="images/LichtInstallation_nah_bunt.webp" alt="" />
+  <img src="images/Videoessay_2.webp" alt="" />
+  <img src="images/Grenzenlos-Erde-waagerecht.webp" alt="" />
+  <img src="images/Illustration_Virdipa_1.webp" alt="" />
+  <img src="images/Sprinter_Seite.webp" alt="" />
+  <img src="images/LichtInstallation_fern_blau.webp" alt="" />
+  <img src="images/ToGo_Rendering2_bearbeitet.webp" alt="" />
+  <!-- Duplikate – exakt gleich wie oben -->
+  <img src="images/MA-Ausstellung_4.webp" alt="" />
+  <img src="images/LichtInstallation_nah_bunt.webp" alt="" />
+  <img src="images/Videoessay_2.webp" alt="" />
+  <img src="images/Grenzenlos-Erde-waagerecht.webp" alt="" />
+  <img src="images/Illustration_Virdipa_1.webp" alt="" />
+  <img src="images/Sprinter_Seite.webp" alt="" />
+  <img src="images/LichtInstallation_fern_blau.webp" alt="" />
+  <img src="images/ToGo_Rendering2_bearbeitet.webp" alt="" />
+</div>
     </div>
 
     <!-- Titel INNERHALB von hero-rows -->
@@ -1189,7 +1213,7 @@
         <span class="contact-value">@isa.a.rt</span>
         <span class="contact-arrow">→</span>
       </a>
-      <a class="contact-item" href="https://linkedin.com/" target="_blank">
+      <a class="contact-item" href="https://linkedin.com/" target="_blank" style="display:none;">
         <span class="contact-label">LinkedIn</span>
         <span class="contact-value">Isa Freese</span>
         <span class="contact-arrow">→</span>
@@ -1600,6 +1624,13 @@ Das Konzept wurde im Rahmen der oohh! Freizeitmesse 2020 in Hamburg präsentiert
 </footer>
 
 <script>
+// ── Bilderschutz ──
+document.addEventListener('contextmenu', e => {
+  if (e.target.tagName === 'IMG') e.preventDefault();
+});
+document.querySelectorAll('img').forEach(img => {
+  img.setAttribute('draggable', 'false');
+});
 
   // ── Theme Toggle ──
   const btn = document.getElementById('theme-btn');
@@ -1652,6 +1683,29 @@ const cards = document.querySelectorAll('.project-card');
     card.style.transition = 'opacity 0.8s ease, transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94)';
     cardObserver.observe(card);
   });
+
+  // ── Nahtloser Marquee-Loop ──
+function setupMarquee(rowSelector, direction) {
+  const row = document.querySelector(rowSelector);
+  if (!row) return;
+  const singleSetWidth = row.scrollWidth / 2;
+  const duration = singleSetWidth / 80; // Geschwindigkeit anpassen (kleiner = schneller)
+
+  if (direction === 'left') {
+    row.style.animation = `marqueeLeftExact ${duration}s linear infinite`;
+    const styleSheet = document.styleSheets[0];
+    styleSheet.insertRule(`@keyframes marqueeLeftExact { from { transform: translateX(0); } to { transform: translateX(-${singleSetWidth}px); } }`, styleSheet.cssRules.length);
+  } else {
+    row.style.animation = `marqueeRightExact ${duration}s linear infinite`;
+    const styleSheet = document.styleSheets[0];
+    styleSheet.insertRule(`@keyframes marqueeRightExact { from { transform: translateX(-${singleSetWidth}px); } to { transform: translateX(0); } }`, styleSheet.cssRules.length);
+  }
+}
+
+window.addEventListener('load', () => {
+  setupMarquee('.row-left', 'left');
+  setupMarquee('.row-right', 'right');
+});
 
   // ── Skill bars ──
   const skillBars = document.querySelectorAll('.skill-bar-fill');
