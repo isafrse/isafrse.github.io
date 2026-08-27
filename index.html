@@ -80,6 +80,7 @@
       cursor: pointer;
       transition: border-color var(--transition);
       overflow: hidden; position: relative;
+      text-decoration: none;
     }
     .logo-placeholder img { position: absolute; inset: 0; object-fit: cover; display: none; }
     .logo-placeholder:hover { border-color: var(--accent-dim); }
@@ -618,6 +619,7 @@
 }
 .detail-project.reverse .detail-project-img {
   grid-template-columns: 2fr 1fr;
+  width: 100%;
 }
 
 /* Slideshow überschreibt das Grid */
@@ -879,10 +881,10 @@
 <!-- NAV -->
 <nav>
   <div class="nav-brand">
-    <div class="logo-placeholder" id="logo-btn" title="Logo hochladen">
-      I
-      <img id="logo-img" src="" alt="Logo" />
-    </div>
+    <a href="#home" class="logo-placeholder" id="logo-btn" title="Zur Startseite">
+  I
+  <img id="logo-img" src="" alt="Logo" />
+</a>
     <span class="brand-name">Isa Freese</span>
   </div>
   <div class="nav-right">
@@ -1617,21 +1619,6 @@ Das Konzept wurde im Rahmen der oohh! Freizeitmesse 2020 in Hamburg präsentiert
   hamburger.addEventListener('click', () => mobileMenu.classList.toggle('open'));
   function closeMobile() { mobileMenu.classList.remove('open'); }
 
-  // ── Logo upload ──
-  const logoBtn = document.getElementById('logo-btn');
-  const logoImg = document.getElementById('logo-img');
-  logoBtn.addEventListener('click', () => {
-    const input = document.createElement('input');
-    input.type = 'file'; input.accept = 'image/*';
-    input.onchange = e => {
-      const file = e.target.files[0];
-      if (!file) return;
-      logoImg.src = URL.createObjectURL(file);
-      logoImg.style.display = 'block';
-    };
-    input.click();
-  });
-
   // ── Scroll reveal ──
   const reveals = document.querySelectorAll('.reveal');
   const observer = new IntersectionObserver(entries => {
@@ -1772,11 +1759,18 @@ if (name === 'grafik') {
     }
   }
 
-  function closeDetail(name) {
-    document.getElementById('detail-' + name).classList.remove('open');
-    document.body.style.overflow = '';
-    document.querySelector('footer').style.background = '';
-  }
+function closeDetail(name) {
+  document.getElementById('detail-' + name).classList.remove('open');
+  document.body.style.overflow = '';
+  document.querySelector('footer').style.background = '';
+  stopAllVideos(name);
+}
+
+function stopAllVideos(name) {
+  document.querySelectorAll('#detail-' + name + ' [data-original-html]').forEach(container => {
+    container.innerHTML = container.dataset.originalHtml;
+  });
+}
 
   function openDetailAndScroll(categoryName, projektId) {
     openDetail(categoryName);
@@ -1790,6 +1784,20 @@ if (name === 'grafik') {
     }, 700);
   }
 
+  // ── Nav Links schließen offene Overlays ──
+document.querySelectorAll('.nav-links a, .logo-placeholder').forEach(link => {
+  link.addEventListener('click', () => {
+    document.querySelectorAll('.category-detail.open').forEach(overlay => {
+      overlay.classList.remove('open');
+      overlay.querySelectorAll('[data-original-html]').forEach(container => {
+        container.innerHTML = container.dataset.originalHtml;
+      });
+    });
+    document.body.style.overflow = '';
+    document.querySelector('footer').style.background = '';
+  });
+});
+
   // Klicks auf Projektkarten sollen NICHT das Overlay öffnen
   document.querySelectorAll('.portfolio-category .project-card').forEach(card => {
     card.addEventListener('click', e => e.stopPropagation());
@@ -1797,10 +1805,13 @@ if (name === 'grafik') {
 
   // ── Vimeo Video ──
   function openVideo(vimeoId, hash, containerId) {
-    const hashParam = hash ? `&h=${hash}` : '';
-    const container = document.getElementById(containerId);
-    container.innerHTML = `<iframe src="https://player.vimeo.com/video/${vimeoId}?autoplay=1${hashParam}&title=0&byline=0&portrait=0" width="100%" height="100%" frameborder="0" allow="autoplay; fullscreen" allowfullscreen style="border-radius:4px;"></iframe>`;
+  const hashParam = hash ? `&h=${hash}` : '';
+  const container = document.getElementById(containerId);
+  if (!container.dataset.originalHtml) {
+    container.dataset.originalHtml = container.innerHTML;
   }
+  container.innerHTML = `<iframe src="https://player.vimeo.com/video/${vimeoId}?autoplay=1${hashParam}&title=0&byline=0&portrait=0" width="100%" height="100%" frameborder="0" allow="autoplay; fullscreen" allowfullscreen style="border-radius:4px;"></iframe>`;
+}
 
 </script>
 </body>
