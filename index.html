@@ -476,6 +476,19 @@
   .detail-header { padding: 16px 24px 32px; }
   .detail-title { font-size: clamp(20px, 5vw, 32px); }
   .portfolio-cat-title { font-size: clamp(20px, 5vw, 32px); }
+  .detail-project-text-top {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+}
+.detail-project-title {
+  font-size: clamp(22px, 6vw, 32px);
+  white-space: normal;
+}
+.detail-project-cat {
+  white-space: normal;
+  font-size: 11px;
+}
 
   /* Slideshow */
   .slideshow-wrap { height: 180px; }
@@ -624,7 +637,6 @@
   grid-template-columns: unset;
   height: auto;
 }
-
 .detail-project-img-stack {
   display: flex;
   flex-direction: column;
@@ -719,6 +731,7 @@
 .cat-grafik .card-cat {
   color: #1a1a18;
 }
+
 .project-card .card-title { transform: translateY(0); }
 .project-card .card-cat { transform: translateY(0); }
 
@@ -757,8 +770,10 @@
   .detail-title { font-size: clamp(20px, 5vw, 32px); }
   .portfolio-cat-title { font-size: clamp(20px, 5vw, 32px); }
 
-  .slideshow-wrap { height: 180px; }
-  .slideshow-slide { height: 180px; }
+.slideshow-wrap { height: 200px !important; }
+.slideshow-slide { height: 200px !important; }
+.slideshow-slide.portrait { width: 150px !important; }
+.slideshow-slide.landscape { width: 280px !important; }
 
   footer { flex-direction: column; gap: 8px; text-align: center; }
   .mobile-menu { padding: 24px; }
@@ -854,13 +869,21 @@
 .detail-video .detail-project.alt-bg,
 .detail-grafik .detail-project.alt-bg,
 .detail-produkt .detail-project.alt-bg {
-  background: rgba(255,255,255,0.12);
-  width: 100vw;
-  margin-left: calc(-50vw + 50%);
-  padding-left: calc(50vw - 50% + 40px);
-  padding-right: calc(50vw - 50% + 40px);
+  position: relative;
   padding-top: 100px;
   padding-bottom: 100px;
+}
+.detail-video .detail-project.alt-bg::before,
+.detail-grafik .detail-project.alt-bg::before,
+.detail-produkt .detail-project.alt-bg::before {
+  content: '';
+  position: absolute;
+  top: 0; bottom: 0;
+  left: 50%;
+  width: 100vw;
+  transform: translateX(-50%);
+  background: rgba(255,255,255,0.12);
+  z-index: -1;
 }
 .detail-project-desc a {
   color: #72ced4;
@@ -938,7 +961,7 @@
   <div class="hero-rows">
     <div class="hero-row-wrap">
       <div class="hero-row row-left">
-  <img src="images/BA_Exposion.webp" alt="" />
+  <img src="images/BA Explosion weiß.webp" alt="" />
   <img src="images/LichtInstallation_nah_pink.webp" alt="" />
   <img src="images/Illustration_Virdipa_2.webp" alt="" />
   <img src="images/MA-Ausstellung_2.webp" alt="" />
